@@ -149,6 +149,9 @@ $(function(){
 		else if (choice == 'INSPECT DRAWER' && deskInspected) {
 			inspectDrawer();
 		}
+		else if (choice == 'INSPECT SCREWDRIVER' && grateOpen) {
+			useScrewdriverAgain();
+		}
 		else if (choice == 'INSPECT SCREWDRIVER' && drawerOpen) {
 			inspectScrewdriver();
 		}
