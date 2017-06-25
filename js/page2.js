@@ -10,6 +10,10 @@ $(function(){
 	// ROOM-SPECIFIC VARIABLES
 	var doorOpen = false;
 	var powerOn = false;
+	var deskInspected = false;
+	var drawerOpen = false;
+	var serversInspected = false;
+	var doorInspected = false;
 
   	// FUNCTIONS
 
@@ -91,7 +95,27 @@ $(function(){
 	}
 
 	function inspectChoices2(choice) {
+		if (choice == 'INSPECT COMPUTER') {
+			inspectComputer();
+		}
+		else if (choice == 'INSPECT DESK') {
+			inspectDesk();
+		}
+		else if (choice == 'INSPECT SERVERS') {
+			inspectServers();
+		}
+		else if (choice == 'INSPECT DOOR') {
+			inspectDoor();
+		}
+		else if (choice == 'INSPECT DRAWER' && deskInspected) {
+			inspectDrawer();
+		}
+		else if (choice == 'INSPECT SCREWDRIVER' && drawerOpen) {
+			inspectScrewdriver();
+		}
+		else {
 		inspectWhat();
+		}
 	}
 
 	function useChoices2(choice) {
@@ -118,6 +142,36 @@ $(function(){
 	// CHILD TAKE FUNCTIONS
 
 	// CHILD INSPECT FUNCTIONS
+	function inspectComputer() {
+		$main.html('<p>This computer\'s hardly modern, but it looks functional. <br> The <strong>POWER BUTTON</strong> is off.</p><p>What will you do?</p>');
+	}
+
+	function inspectDesk() {
+		$main.html('<p>It\'s an old desk with a single <strong>DRAWER</strong>. <br> Somebody has carved "Sunil wuz here" into the wood. <br> You feel deep regret that you will likely never meet this great artist.</p><p>What will you do?</p>');
+		deskInspected = true;
+	}
+
+	function inspectDrawer() {
+		$main.html('<p>It\'s a drawer... <br> Maybe try opening it?</p><p>What will you do?</p>');
+	}
+
+	function inspectScrewdriver() {
+		$main.html('<p>It\'s a screwdriver. <br> A Philip\'s head to be precise. <br> You use it to unscrew things. <br> Aren\'t you glad you inspected this?</p><p>What will you do?</p>');
+	}
+
+	function inspectServers() {
+		$main.html('<p>There are a ton of servers with wires running out of them. <br> Behind one of them servers, you can see a metal grate that\'s screwed on tight.</p>');
+		serversInspected = true;
+	}
+
+	function inspectSwitch() {
+		$main.html('<p>It\'s a simple switch. <br> It goes on or off. That\'s it. <br> I\'m starting to suspect you may not be too bright.</p>');
+	}
+
+	function inspectDoor() {
+		$main.html('<p>')
+		doorInspected = true;
+	}
 
 	// CHILD USE FUNCTIONS
 
