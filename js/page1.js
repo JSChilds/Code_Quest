@@ -11,8 +11,12 @@ $(function(){
 	var hasPhone = false;
 	var usedPhone = false;
 	var hasKey = false;
+	var inspectedComputer = false;
+	var inspectingDoor = false;
 
-	$input.keydown(function(event) {
+	$input.keydown(getInput);
+
+	function getInput(event) {
 		var choice = '';
     	if (event.keyCode == 13) {
     		choice = $(this).val();
@@ -21,7 +25,7 @@ $(function(){
 		    }
 		checkChoice(choice);
 		}
-  	});
+	}
 
 
   	// FUNCTIONS
@@ -33,18 +37,18 @@ $(function(){
 	}
 
 	function goWhere() {
-		$main.html('<p>Go where?</p><p>Please enter your command again, specifying where you want to go.</p>')
+		$main.html('<p>Go where?</p><p>Please enter your command again, specifying a valid direction you want to go to.</p>')
 	}
 	function takeWhat() {
-		$main.html('<p>Take what?</p><p>Please enter your command again, specifying what you want to take.</p>');
+		$main.html('<p>Take what?</p><p>Please enter your command again, specifying a valid object you want to take.</p>');
 	}
 
 	function inspectWhat() {
-		$main.html('<p>Inspect what?</p><p>Please enter your command again, specifying what you want to inspect.</p>');
+		$main.html('<p>Inspect what?</p><p>Please enter your command again, specifying a valid object you want to inspect.</p>');
 	}
 
 	function useWhat() {
-		$main.html('<p>Use what?</p><p>Please enter your command again, specifying what you want to use.</p>');
+		$main.html('<p>Use what?</p><p>Please enter your command again, specifying a valid object you want to use.</p>');
 	}
 
 	function checkChoice(choice) {
@@ -93,14 +97,23 @@ $(function(){
 		else if (choice == 'TAKE IPHONE') {
 			getPhone();
 		}
+		else if (choice == 'TAKE KEYCARD' && hasKey) {
+			errorHasKey();
+		}
+		else if (choice == 'TAKE KEYCARD' && inspectedComputer) {
+			getKey();
+		}
 		else {
 			takeWhat();
 		}
 	}
 
 	function inspectChoices1(choice) {
-		if (choice == 'INSPECT COMPUTER') {
+		if (choice == 'INSPECT COMPUTER' && !dark) {
 			inspectComputer();
+		}
+		else if (choice == 'INSPECT DOOR' && !dark) {
+			inspectDoor();
 		}
 		else {
 			inspectWhat();
@@ -113,6 +126,18 @@ $(function(){
 		}
 		else if (choice == 'USE IPHONE' && hasPhone) {
 			usePhone();
+		}
+		else if (choice == 'USE DOOR' && !dark) {
+			useDoor();
+		}
+		else if (choice == 'USE KEYCARD' && hasKey && inspectingDoor) {
+			openDoor();
+		}
+		else if (choice == 'USE KEYCARD' && hasKey) {
+			useKeyError();
+		}
+		else if (choice == 'USE COMPUTER' && !dark) {
+			useComputer();
 		}
 		else {
 			useWhat();
@@ -144,14 +169,29 @@ $(function(){
 		hasPhone = true;
 	}
 
-	function errorPhone() {
+	function errorHasPhone() {
 		$main.html('<p>You already have the iPhone &copy. <br> You\'re literally holding it in your hand.</p><p>What will you do?</p>');
+	}
+
+	function getKey() {
+		$main.html('<p>You take the keycard.</p><p>What will you do?</p>');
+		hasKey = true;
+	}
+
+	function errorHasKey() {
+		$main.html('<p>You already have the keycard. <br> You\'re literally holding it in your hand.</p><p>What will you do?</p>');
 	}
 
 	// CHILD INSPECT FUNCTIONS
 
 	function inspectComputer() {
-		$main.html('It\'s a broken down old PC. <br> Looking at it gives you a pit in your stomach, but you\'re not sure why. <p>Behind the keyboard, you see a small <strong>KEYCARD</strong> with what looks to be your picture on it. <p>What will you do?</p>');
+		$main.html('<p>It\'s a broken down old PC. <br> Looking at it gives you a pit in your stomach, but you\'re not sure why. <p>Behind the keyboard, you see a small <strong>KEYCARD</strong> with what looks to be your picture on it. <p>What will you do?</p>');
+		inspectedComputer = true;
+	}
+
+	function inspectDoor() {
+		$main.html('<p>It\'s a large, oak door. <br> There looks to be a slot for a keycard on it. <br> Kind of ruins the whole rustic aesthetic of the room, you think, but then again, you\'re an insufferable snob.<p>What will you do?</p>');		
+		inspectingDoor = true;
 	}
 
 	// CHILD USE FUNCTIONS
@@ -166,10 +206,21 @@ $(function(){
 		$main.html('<p>You play Angry Birds for 45 minutes straight. <br> You begin to seriously question what you\'re doing with your life. <p>What will you do?</p>');
 	}
 
+	function useDoor() {
+		$main.html('<p>The door\'s locked. It won\'t budge.</p><p>What will you do?</p>');
+	}
 
+	function useKeyError() {
+		$main.html('<p>Use the keycard on what?</p> <br> (Hint: Go to the door first, dummy)</p><p>What will you do?</p>');
+	}
 
+	function openDoor() {
+		$main.html('<p>You swipe the keycard and the door swings open. <br> The path to the <strong>NORTH</strong> is now clear. <br> You have a bad feeling about this.</p>What will you do?</p>');
+	}
 
-
+	function useComputer() {
+		$main.html('<p>It\'s busted and you can\'t turn it on. <br> I\'m sure you\'ve heard that before.</p><p>What will you do?</p>');
+	}
 
 
 
