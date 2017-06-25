@@ -107,6 +107,9 @@ $(function(){
 		else if (choice == 'TAKE DESK') {
 			takeDesk();
 		}
+		else if (choice == 'TAKE DRAWER') {
+			takeDrawer();
+		}
 		else if (choice == 'TAKE SERVERS') {
 			takeServers();
 		}
@@ -264,6 +267,10 @@ $(function(){
 
 	function takeDesk() {
 		$main.html('<p>The desk is way too heavy to carry. <br> Clearly, you don\'t lift. Pathetic.</p><p>What will you do?</p>');
+	}
+
+	function takeDrawer() {
+		$main.html('<p>You pull the drawer out and take it. <br> Then you put it back because you realise that was a really stupid idea <br> and there\'s literally nothing useful you can do with a drawer.</p><p>What will you do?</p>');
 	}
 
 	function getScrewdriver() {
