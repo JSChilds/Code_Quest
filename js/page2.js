@@ -12,11 +12,13 @@ $(function(){
 	var powerOn = false;
 	var deskInspected = false;
 	var drawerOpen = false;
+	var hasScrewdriver = false;
 	var computerInspected = false;
 	var serversInspected = false;
 	var doorInspected = false;
 	var hasScrewdriver = false;
 	var grateOpen = false;
+	var comptuerPowerOn = false;
 
   	// FUNCTIONS
 
@@ -94,7 +96,12 @@ $(function(){
 	}
 
 	function takeChoices2(choice) {
-		takeWhat();
+		if (choice == 'TAKE SCREWDRIVER' && drawerOpen) {
+			getScrewdriver();
+		}
+		else {
+			takeWhat();
+		}
 	}
 
 	function inspectChoices2(choice) {
@@ -160,6 +167,10 @@ $(function(){
 	}
 
 	// CHILD TAKE FUNCTIONS
+	function getScrewdriver() {
+		$main.html('<p>You picked up the screwdriver. <br> Praise be to you, O great master of tools. <img style="height: 329px; margin-top: 17px" src="../images/screwdriver.jpg"/><p>What will you do?</p>');
+		hasScrewdriver = true;
+	}
 
 	// CHILD INSPECT FUNCTIONS
 	function inspectComputer() {
@@ -196,7 +207,7 @@ $(function(){
 
 	// CHILD USE FUNCTIONS
 	function useDrawer() {
-		$main.html('<p>You opened the drawer. There\'s a small, flimsy-looking <strong>SCREWDRIVER</strong> inside.</p>');
+		$main.html('<p>You opened the drawer. <br> There\'s a small, flimsy-looking <strong>SCREWDRIVER</strong> inside.</p>');
 		drawerOpen = true;
 	}
 
@@ -213,9 +224,15 @@ $(function(){
 		$main.html('<p>You don\'t have the screwdriver anymore, dingus. <br> Please try to pay attention.</p>What will you do?</p>');
 	}
 
-	function usePowerButton() {
+	function usePowerButtonError() {
 		$main.html('<p>You press the power button, but nothing happens. <br> Bummer.</p><p>What will you do?</p>');
 	}
+
+	function usePowerButton() {
+		$main.html('<p>You turn on the power and hear that familiar Windows XP start-up sound. <br> Ah, memories.</p><p>What will you do?</p>');
+		comptuerPowerOn = true;
+	}
+
 	// function openDoor() {
 	// 	$main.html('<p>The door slides upward, opening the path to the <strong>WEST</strong>. <br> You better hurry through in case it closes on you and crushes you to death. <br> Or don\'t. Whatever.</p><p>What will you do?</p>');
 	// }
