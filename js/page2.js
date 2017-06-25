@@ -137,6 +137,9 @@ $(function(){
 		else if (choice == 'INSPECT DESK') {
 			inspectDesk();
 		}
+		else if (choice == 'INSPECT SERVERS' && grateOpen) {
+			inspectServersAgain();
+		}
 		else if (choice == 'INSPECT SERVERS') {
 			inspectServers();
 		}
@@ -316,6 +319,10 @@ $(function(){
 	function inspectServers() {
 		$main.html('<p>There are a ton of servers with wires running out of them. <br> Behind one of the servers, you can see a metal grate that\'s screwed on tight.</p>');
 		serversInspected = true;
+	}
+
+	function inspectServersAgain() {
+		$main.html('<p>The servers are the same as before, <br> but now you can see a <strong>SWITCH</strong> behind that grate.</p><p>What will you do?</p>');
 	}
 
 	function inspectSwitch() {
