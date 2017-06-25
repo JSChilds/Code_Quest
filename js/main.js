@@ -4,8 +4,7 @@ $(function() {
 
 	$button.click(function(event){
 		console.log('hey');
-
-
+		
 	});
 
 
