@@ -101,7 +101,10 @@ $(function(){
 	}
 
 	function takeChoices2(choice) {
-		if (choice == 'TAKE SCREWDRIVER' && drawerOpen) {
+		if (choice == 'TAKE SCREWDRIVER' && hasScrewdriver) {
+			getScrewdriverError();
+		}
+		else if (choice == 'TAKE SCREWDRIVER' && drawerOpen) {
 			getScrewdriver();
 		}
 		else if (choice == 'TAKE DESK') {
@@ -170,7 +173,10 @@ $(function(){
 	}
 
 	function useChoices2(choice) {
-		if (choice == 'USE DRAWER' && deskInspected) {
+		if (choice == 'USE DRAWER' && hasScrewdriver) {
+			useDrawerAgain();
+		}
+		else if (choice == 'USE DRAWER' && deskInspected) {
 			useDrawer();
 		}
 		else if (choice == 'USE DESK') {
@@ -284,6 +290,10 @@ $(function(){
 		hasScrewdriver = true;
 	}
 
+	function getScrewdriverError() {
+		$main.html('<p>You already have the screwdriver. You\'re literally holing it.</p><p>What will you do?</p>');
+	}
+
 	function takeServers() {
 		$main.html('<p>You feel like unplugging any of these would be a bad idea. <br> Best just leave them where they are.</p><p>What will you do?</p>');
 	}
@@ -362,9 +372,14 @@ $(function(){
 	function useDesk() {
 		$main.html('<p>You sit at the desk and compose a sonnet. <br> It\'s beautiful. <br> You start to cry.</p><p>What will you do?</p>');
 	}
+
 	function useDrawer() {
 		$main.html('<p>You opened the drawer. <br> There\'s a small, flimsy-looking <strong>SCREWDRIVER</strong> inside.</p>');
 		drawerOpen = true;
+	}
+
+	function useDrawerAgain() {
+		$main.html('<p>There\'s nothing else in the drawer. <br> Or your brain, apparently.</p><p>What will you do?</p>');
 	}
 
 	function useScrewdriver() {
