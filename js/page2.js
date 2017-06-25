@@ -27,22 +27,22 @@ $(function(){
 	}
 
 	function error() {
-		$main.html('<p>Sorry, I don\'t recognise that command.</p><p>Please enter a command with <strong>GO</strong>,<strong> INSPECT</strong>,<strong> TAKE</strong> or<strong> USE</strong>, followed by a specified direction or object.');
+		$main.html('<p>Sorry, I don\'t recognise that command.</p><p>Please enter a command with <strong>GO</strong>,<strong> INSPECT</strong>,<strong> TAKE</strong> or<strong> USE</strong>, <br> followed by a specified direction or object.');
 	}
 
 	function goWhere() {
-		$main.html('<p>Go where?</p><p>Please enter your command again, specifying a valid direction you want to go to.</p>')
+		$main.html('<p>Go where?</p><p>Please enter your command again, <br> specifying a valid direction you want to go to.</p>')
 	}
 	function takeWhat() {
-		$main.html('<p>Take what?</p><p>Please enter your command again, specifying a valid object you want to take.</p>');
+		$main.html('<p>Take what?</p><p>Please enter your command again, <br> specifying a valid object you want to take.</p>');
 	}
 
 	function inspectWhat() {
-		$main.html('<p>Inspect what?</p><p>Please enter your command again, specifying a valid object you want to inspect.</p>');
+		$main.html('<p>Inspect what?</p><p>Please enter your command again, <br> specifying a valid object you want to inspect.</p>');
 	}
 
 	function useWhat() {
-		$main.html('<p>Use what?</p><p>Please enter your command again, specifying a valid object you want to use.</p>');
+		$main.html('<p>Use what?</p><p>Please enter your command again, <br> specifying a valid object you want to use.</p>');
 	}
 
 	function checkChoice(choice) {
