@@ -129,10 +129,10 @@ $(function(){
 		else if (choice == 'INSPECT DOOR' && doorOpen) {
 			inspectDoor2();
 		}
-		else if (choice == 'INSPECT IPHONE' && hasPhone) {
+		else if (choice == 'INSPECT IPHONE') {
 			inspectPhone();
 		}
-		else if (choice == 'INSPECT KEYCARD' && hasKey) {
+		else if (choice == 'INSPECT KEYCARD' && inspectedComputer) {
 			inspectKey();
 		}
 		else {
@@ -188,8 +188,9 @@ $(function(){
 	// CHILD TAKE FUNCTIONS
 
 	function getPhone() {
-		$main.html('<p>You pick up the iPhone &copy (Trademark Apple Computers). Everybody thinks you\'re really cool.</p><p>What will you do?</p>');
+		$main.html('<p>You pick up the iPhone &copy (Trademark Apple Computers). <br> Everybody thinks you\'re really cool.</p><p>What will you do?</p>');
 		hasPhone = true;
+		// ADD PIC OF PHONE TO INVENTORY
 	}
 
 	function errorHasPhone() {
@@ -199,6 +200,7 @@ $(function(){
 	function getKey() {
 		$main.html('<p>You take the keycard.</p><p>What will you do?</p>');
 		hasKey = true;
+		// ADD PIC OF KEY TO INVENTORY
 	}
 
 	function errorHasKey() {
@@ -221,7 +223,7 @@ $(function(){
 	}
 
 	function inspectDoor() {
-		$main.html('<p>It\'s a large, oak door. <br> There looks to be a slot for a keycard on it. <br> Kind of ruins the whole rustic aesthetic of the room, you think, but then again, you\'re an insufferable snob.<p>What will you do?</p>');		
+		$main.html('<p>It\'s a large, oak door. <br> There looks to be a slot for a keycard on it. <br> Kind of ruins the whole rustic aesthetic of the room, you think, <br> but then again, you\'re an insufferable snob.<p>What will you do?</p>');		
 		inspectingDoor = true;
 	}
 
@@ -265,6 +267,8 @@ $(function(){
 	function openDoor() {
 		$main.html('<p>You swipe the keycard and the door swings open. <br> The path to the <strong>NORTH</strong> is now clear. <br> You have a bad feeling about this.</p>What will you do?</p>');
 		doorOpen = true;
+		// REMOVE PIC OF KEY FROM INVENTORY
+		// POSSIBLY SET hasKEY to FALSE IF NEEDED?
 	}
 
 	function useComputer() {

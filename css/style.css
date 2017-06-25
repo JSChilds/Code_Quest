@@ -1,5 +1,17 @@
 body {
 	text-align: center;
+	background-color: black;
+	color: green;
+	font-family: "Courier New";
+}
+
+h1 {
+	font-size: 51px;
+	margin-bottom: 22px;
+}
+
+#click-play {
+	font-size: 19px;
 }
 
 .instructions {
@@ -8,9 +20,21 @@ body {
 
 a {
 	text-decoration: none;
-	color: black;
+	color: green;
+	font-family: "Courier New";
+	font-size: 16px;
+}
+
+button {
+	background-color: black;
+	margin-bottom: 40px; 
 }
 
 input {
 	width: 290px;
+	font-size: 20px;
+	color: green;
+	font-family: "Courier New";
+	border-color: grey;
+	background-color: black;
 }
