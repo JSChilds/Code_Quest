@@ -10,6 +10,7 @@ $(function(){
 	var dark = true;
 	var hasPhone = false;
 	var usedPhone = false;
+	var hasKey = false;
 
 	$input.keydown(function(event) {
 		var choice = '';
@@ -47,11 +48,8 @@ $(function(){
 
 	function checkChoice(choice) {
 		choice = choice.toUpperCase();
-  		if (choice.indexOf('GO') > -1 && dark) {
-  			tooDark();
-	    }
-	    else if (choice == 'GO') {
-	    	goWhere();
+  		if (choice.indexOf('GO') > -1) {
+  			goChoices1(choice);
 	    }
 	    else if (choice == 'TAKE') {
 	    	takeWhat();
@@ -73,9 +71,42 @@ $(function(){
 	    }
   	}
 
-	// ROOM-SPECIFIC FUNCTIONS
+	// MASTER CHOICE FUNCTIONS
+
+	function goChoices1(choice) {
+		if (dark) {
+			tooDark();
+		} 
+		else if (choice == 'GO NORTH' && hasKey) {
+			goNorth();
+		}
+		else if (choice == 'GO NORTH') {
+			northBlock();
+		}
+		else if (choice == 'GO SOUTH' || choice == 'GO WEST' || choice == 'GO EAST') {
+			noGo();
+		}
+		else {
+			goWhere();
+		}
+	}
+
+	// CHILD GO FUNCTIONS
+
 	function tooDark() {
 		$main.html('<p>It\'s too dark to see where you\'re going.<p>What will you do?</p>');
+	}
+
+	function goNorth() {
+		console.log('go north');
+	}
+
+	function northBlock() {
+		$main.html('<p>You can\'t go <strong>NORTH</strong>, there\'s a door in the way. <br> Remember when I mentioned the door?</p><p>What will you do?</p>');
+	}
+
+	function noGo() {
+		$main.html('<p>That way only leads to a dead end.</p>What will you do?</p>');
 	}
 
 	function getPhone() {
