@@ -102,6 +102,9 @@ $(function(){
 		else if (choice == 'TAKE DESK') {
 			takeDesk();
 		}
+		else if (choice == 'TAKE SERVERS') {
+			takeServers();
+		}
 		else {
 			takeWhat();
 		}
@@ -150,6 +153,9 @@ $(function(){
 		else if (choice == 'USE POWER BUTTON' && computerInspected) {
 			usePowerButtonError();
 		}
+		else if (choice == 'USE SERVERS') {
+			useServers();
+		}
 		else {
 			useWhat();
 		}
@@ -180,6 +186,10 @@ $(function(){
 	function getScrewdriver() {
 		$main.html('<p>You picked up the screwdriver. <br> Praise be to you, O great master of tools. <img style="height: 329px; margin-top: 17px" src="../images/screwdriver.jpg"/><p>What will you do?</p>');
 		hasScrewdriver = true;
+	}
+
+	function takeServers() {
+		$main.html('<p>You feel like unplugging any of these would be a bad idea. <br> Best just leave them where they are.</p><p>What will you do?</p>');
 	}
 
 	// CHILD INSPECT FUNCTIONS
@@ -244,6 +254,10 @@ $(function(){
 	function usePowerButton() {
 		$main.html('<p>You turn on the power and hear that familiar Windows XP start-up sound. <br> Ah, memories.</p><p>What will you do?</p>');
 		comptuerPowerOn = true;
+	}
+
+	function useServers() {
+		$main.html('<p>The servers are working fine already.</p><p>What will you do?</p>');
 	}
 
 	// function openDoor() {
