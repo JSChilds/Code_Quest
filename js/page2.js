@@ -12,8 +12,11 @@ $(function(){
 	var powerOn = false;
 	var deskInspected = false;
 	var drawerOpen = false;
+	var computerInspected = false;
 	var serversInspected = false;
 	var doorInspected = false;
+	var hasScrewdriver = false;
+	var grateOpen = false;
 
   	// FUNCTIONS
 
@@ -119,7 +122,24 @@ $(function(){
 	}
 
 	function useChoices2(choice) {
-		useWhat();
+		if (choice == 'USE DRAWER' && deskInspected) {
+			useDrawer();
+		}
+		else if (choice == 'USE SCREWDRIVER' && hasScrewdriver && !serversInspected) {
+			useScrewdriverError();
+		}
+		else if (choice == 'USE SCREWDRIVER' && hasScrewdriver) {
+			useScrewdriver();
+		}
+		else if (choice == 'USE SCREWDRIVER' && grateOpen) {
+			useScrewdriverAgain();
+		}
+		else if (choice == 'USE POWER BUTTON' && computerInspected) {
+			usePowerButtonError();
+		}
+		else {
+			useWhat();
+		}
 	}
 
 	// CHILD GO FUNCTIONS
@@ -144,6 +164,7 @@ $(function(){
 	// CHILD INSPECT FUNCTIONS
 	function inspectComputer() {
 		$main.html('<p>This computer\'s hardly modern, but it looks functional. <br> The <strong>POWER BUTTON</strong> is off.</p><p>What will you do?</p>');
+		computerInspected = true;
 	}
 
 	function inspectDesk() {
@@ -174,7 +195,27 @@ $(function(){
 	}
 
 	// CHILD USE FUNCTIONS
+	function useDrawer() {
+		$main.html('<p>You opened the drawer. There\'s a small, flimsy-looking <strong>SCREWDRIVER</strong> inside.</p>');
+		drawerOpen = true;
+	}
 
+	function useScrewdriver() {
+		$main.html('<p>You carefully unscrew the metal grate to reveal a switch, <br> breaking the flimsy screwdriver in the proccess. <br> Why there was a metal grate in the way of a switch you don\'t know, <br> it\'s almost like it was just there to waste your time. <br> Hmm.</p><p>What will you do?</p>');
+		grateOpen = true;
+	}
+
+	function useScrewdriverError() {
+		$main.html('<p>You\'d better find something to use it on first, don\'t you think?');
+	}
+
+	function useScrewdriverAgain() {
+		$main.html('<p>You don\'t have the screwdriver anymore, dingus. <br> Please try to pay attention.</p>What will you do?</p>');
+	}
+
+	function usePowerButton() {
+		$main.html('<p>You press the power button, but nothing happens. <br> Bummer.</p><p>What will you do?</p>');
+	}
 	// function openDoor() {
 	// 	$main.html('<p>The door slides upward, opening the path to the <strong>WEST</strong>. <br> You better hurry through in case it closes on you and crushes you to death. <br> Or don\'t. Whatever.</p><p>What will you do?</p>');
 	// }
