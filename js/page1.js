@@ -13,6 +13,7 @@ $(function(){
 	var hasKey = false;
 	var inspectedComputer = false;
 	var inspectingDoor = false;
+	var doorOpen = false;
 
 	$input.keydown(getInput);
 
@@ -103,17 +104,35 @@ $(function(){
 		else if (choice == 'TAKE KEYCARD' && inspectedComputer) {
 			getKey();
 		}
+		else if (choice == 'TAKE DOOR' && !dark) {
+			takeDoor();
+		}
+		else if (choice == 'TAKE COMPUTER' && !dark) {
+			takeComputer();
+		}
 		else {
 			takeWhat();
 		}
 	}
 
 	function inspectChoices1(choice) {
-		if (choice == 'INSPECT COMPUTER' && !dark) {
+		if (choice == 'INSPECT COMPUTER' && !dark && !hasKey) {
 			inspectComputer();
 		}
-		else if (choice == 'INSPECT DOOR' && !dark) {
+		else if (choice == 'INSPECT COMPUTER' && !dark) {
+			inspectComputer2();
+		}
+		else if (choice == 'INSPECT DOOR' && !dark && !doorOpen) {
 			inspectDoor();
+		}
+		else if (choice == 'INSPECT DOOR' && doorOpen) {
+			inspectDoor2();
+		}
+		else if (choice == 'INSPECT IPHONE' && hasPhone) {
+			inspectPhone();
+		}
+		else if (choice == 'INSPECT KEYCARD' && hasKey) {
+			inspectKey();
 		}
 		else {
 			inspectWhat();
@@ -126,6 +145,9 @@ $(function(){
 		}
 		else if (choice == 'USE IPHONE' && hasPhone) {
 			usePhone();
+		}
+		else if (choice == 'USE DOOR' && doorOpen) {
+			inspectDoor2();
 		}
 		else if (choice == 'USE DOOR' && !dark) {
 			useDoor();
@@ -182,6 +204,14 @@ $(function(){
 		$main.html('<p>You already have the keycard. <br> You\'re literally holding it in your hand.</p><p>What will you do?</p>');
 	}
 
+	function takeComputer() {
+		$main.html('<p>It\'s really heavy and has no discernible use, so there\'s no point in taking it. <br> Hey, that sounds like you!</p><p>What will you do?</p>');
+	}
+
+	function takeDoor() {
+		$main.html('It\'s... it\'s a door. You can\'t take a door. Come on.</p><p>What will you do?');
+	}
+
 	// CHILD INSPECT FUNCTIONS
 
 	function inspectComputer() {
@@ -192,6 +222,22 @@ $(function(){
 	function inspectDoor() {
 		$main.html('<p>It\'s a large, oak door. <br> There looks to be a slot for a keycard on it. <br> Kind of ruins the whole rustic aesthetic of the room, you think, but then again, you\'re an insufferable snob.<p>What will you do?</p>');		
 		inspectingDoor = true;
+	}
+
+	function inspectComputer2() {
+		$main.html('<p>It\'s a broken down old PC. <br> Looking at it gives you a pit in your stomach, but you\'re not sure why.</p><p>What will you do?</p>');
+	}
+
+	function inspectDoor2() {
+		$main.html('<p>The door is open now.</p><p>What will you do?</p>');
+	}
+
+	function inspectPhone() {
+		$main.html('<p>It\'s a beautiful, brand new iPhone &copy 7. Everyone who uses this is really cool. <br> (Apple - please send me money or free iPhones.)</p><p>What will you do?</p>');
+	}
+
+	function inspectKey() {
+		$main.html('<p>It\'s a keycard with a very unflattering photo of you on it. <br> God, that hair. What were you thinking?</p><p>What will you do</p>');
 	}
 
 	// CHILD USE FUNCTIONS
@@ -216,6 +262,7 @@ $(function(){
 
 	function openDoor() {
 		$main.html('<p>You swipe the keycard and the door swings open. <br> The path to the <strong>NORTH</strong> is now clear. <br> You have a bad feeling about this.</p>What will you do?</p>');
+		doorOpen = true;
 	}
 
 	function useComputer() {
