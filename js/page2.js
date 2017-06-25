@@ -99,6 +99,9 @@ $(function(){
 		if (choice == 'TAKE SCREWDRIVER' && drawerOpen) {
 			getScrewdriver();
 		}
+		else if (choice == 'TAKE DESK') {
+			takeDesk();
+		}
 		else {
 			takeWhat();
 		}
@@ -131,6 +134,9 @@ $(function(){
 	function useChoices2(choice) {
 		if (choice == 'USE DRAWER' && deskInspected) {
 			useDrawer();
+		}
+		else if (choice == 'USE DESK') {
+			useDesk();
 		}
 		else if (choice == 'USE SCREWDRIVER' && hasScrewdriver && !serversInspected) {
 			useScrewdriverError();
@@ -167,6 +173,10 @@ $(function(){
 	}
 
 	// CHILD TAKE FUNCTIONS
+	function takeDesk() {
+		$main.html('<p>The desk is way too heavy to carry. <br> Clearly, you don\'t lift. Pathetic.</p><p>What will you do?</p>');
+	}
+
 	function getScrewdriver() {
 		$main.html('<p>You picked up the screwdriver. <br> Praise be to you, O great master of tools. <img style="height: 329px; margin-top: 17px" src="../images/screwdriver.jpg"/><p>What will you do?</p>');
 		hasScrewdriver = true;
@@ -206,6 +216,9 @@ $(function(){
 	}
 
 	// CHILD USE FUNCTIONS
+	function useDesk() {
+		$main.html('<p>You sit at the desk and compose a sonnet. <br> It\'s beautiful. <br> You start to cry.</p><p>What will you do?</p>');
+	}
 	function useDrawer() {
 		$main.html('<p>You opened the drawer. <br> There\'s a small, flimsy-looking <strong>SCREWDRIVER</strong> inside.</p>');
 		drawerOpen = true;
