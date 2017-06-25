@@ -78,7 +78,7 @@ $(function(){
 		if (dark) {
 			tooDark();
 		} 
-		else if (choice == 'GO NORTH' && hasKey) {
+		else if (choice == 'GO NORTH' && doorOpen) {
 			goNorth();
 		}
 		else if (choice == 'GO NORTH') {
@@ -188,7 +188,7 @@ $(function(){
 	// CHILD TAKE FUNCTIONS
 
 	function getPhone() {
-		$main.html('<p>You pick up the iPhone &copy (Trademark Apple Computers). <br> Everybody thinks you\'re really cool.</p><p>What will you do?</p>');
+		$main.html('<p>You pick up the iPhone &copy (Trademark Apple Computers).</p> <img style="width: 400px" src="../images/iphone.jpg"/><p>Now everybody thinks you\'re really cool.</p><p>What will you do?</p>');
 		hasPhone = true;
 		// ADD PIC OF PHONE TO INVENTORY
 	}
@@ -198,9 +198,9 @@ $(function(){
 	}
 
 	function getKey() {
-		$main.html('<p>You take the keycard.</p><p>What will you do?</p>');
+		$main.html('<p>You take the keycard.</p><img src="../images/keycard.jpg"/><p>What will you do?</p>');
 		hasKey = true;
-		// ADD PIC OF KEY TO INVENTORY
+		// ADD PIC OF KEY TO INVENTORY AND SCREEN
 	}
 
 	function errorHasKey() {
@@ -246,7 +246,7 @@ $(function(){
 	// CHILD USE FUNCTIONS
 
 	function usePhone() {
-		$main.html('<p>You turn on the iPhone &copy (Trademark Apple Computers) ("Think different" &copy).</p><p>The room is illuminated.</p>It is a small dungeon with an old <strong>COMPUTER</strong> in the corner <br> and a large, oak <strong>DOOR</strong> to your <strong>NORTH</strong>.</p><p>What will you do?</p>');
+		$main.html('<p>You turn on the iPhone &copy (Trademark Apple Computers) ("Think different" &copy).</p><p>The room is illuminated.</p>You are in a small dungeon with an old <strong>COMPUTER</strong> in the corner <br> and a large, oak <strong>DOOR</strong> to your <strong>NORTH</strong>.</p><p>What will you do?</p>');
 		$h1.html('A SLIGHTLY LESS DARK ROOM');
 		usedPhone = true;
 		dark = false;
