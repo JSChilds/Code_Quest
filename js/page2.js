@@ -114,6 +114,9 @@ $(function(){
 		if (choice == 'INSPECT COMPUTER') {
 			inspectComputer();
 		}
+		else if (choice == 'INSPECT POWER BUTTON' && computerInspected) {
+			inspectPowerButton();
+		}
 		else if (choice == 'INSPECT DESK') {
 			inspectDesk();
 		}
@@ -152,6 +155,9 @@ $(function(){
 		}
 		else if (choice == 'USE POWER BUTTON' && computerInspected) {
 			usePowerButtonError();
+		}
+		else if (choice == 'USE POWER BUTTON' && powerOn) {
+			usePowerButton();
 		}
 		else if (choice == 'USE SERVERS') {
 			useServers();
@@ -196,6 +202,10 @@ $(function(){
 	function inspectComputer() {
 		$main.html('<p>This computer\'s hardly modern, but it looks functional. <br> The <strong>POWER BUTTON</strong> is off.</p><p>What will you do?</p>');
 		computerInspected = true;
+	}
+
+	function inspectPowerButton() {
+		$main.html('<p>Yep, that\'s a power button all right. <br> (USE IT!!!!!!!!!!) </br><p>What will you do?</p>');
 	}
 
 	function inspectDesk() {
