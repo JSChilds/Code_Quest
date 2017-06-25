@@ -10,6 +10,7 @@ $(function(){
 	// ROOM-SPECIFIC VARIABLES
 	var doorOpen = false;
 	var powerOn = false;
+	var doorControlsOn = false;
 	var deskInspected = false;
 	var drawerOpen = false;
 	var hasScrewdriver = false;
@@ -19,6 +20,7 @@ $(function(){
 	var hasScrewdriver = false;
 	var grateOpen = false;
 	var comptuerPowerOn = false;
+	var step = 0;
 
   	// FUNCTIONS
 
@@ -58,7 +60,10 @@ $(function(){
 
 	function checkChoice(choice) {
 		choice = choice.toUpperCase();
-  		if (choice.indexOf('GO') > -1) {
+		if (step > 0) {
+			computerChoices(choice);
+		}
+  		else if (choice.indexOf('GO') > -1) {
   			goChoices2(choice);
 	    }
 	    else if (choice.indexOf('TAKE') > -1) {
@@ -188,6 +193,37 @@ $(function(){
 		}
 	}
 
+	function computerChoices(choice) {
+		if (choice == 'CD DOOR_CONTROL' && step == 1) {
+			step = 2;
+			$main.html('<p>CHANGED DIRECTORY TO DOOR_CONTROL. <br> PLEASE LIST ALL FILES IN WORKING DIRECTORY.</p>What will you type?</p>');
+		}
+		else if (choice == 'LS' && step == 2) {
+			step = 3;
+			$main.html('<p>PLANNER.TXT <br> SERVERS.TXT <br> CUTE_KITTEN.PNG <br> ERROR: NO DOOR_CONTROL.EXE FILE FOUND. <br> PLEASE CREATE NEW FILE TITLED DOOR_CONTROL.EXE</p><p>What will you type?');
+		}
+		else if (choice == 'TOUCH DOOR_CONTROL.EXE' && step == 3) {
+			step = 4;
+			$main.html('<p>DOOR_CONTROL.EXE CREATED. <br> DOOR_CONTROL.EXE LINKED WITH DOOR_CONTROLS. <br> PLEASE OPEN DOOR_CONTROLS.EXE TO ACCESS DOOR CONTROLS.</p><p>What will you type?');
+		}
+		else if (choice == 'OPEN DOOR_CONTROL.EXE' && step == 4) {
+			step = 0;
+			$main.html('<p>DOOR CONTROLS INITIATED. YOU ARE SMART AND BEAUTIFUL <br> AND ALL THE OTHER KIDS ARE JEALOUS OF YOU. <br> GOODBYE XXX ;)</p><p>The eerily supportive computer switches off. <br> You better go check the door.</p><p>What will you do?</p>');
+		}
+		else if (choice !== 'CD DOOR_CONTROL' && step == 1) {
+			$main.html('<p>INCORRECT COMMAND. PLEASE CHANGE TO DOOR_CONTROL DIRECTORY.</p><p>What will you type?</p>');
+		}
+		else if (choice !== 'LS' && step == 2) {
+			$main.html('<p>INCORRECT COMMAND. PLEASE LIST ALL FILES IN WORKING DIRECTORY.</p><p>What will you type?</p>');
+		}
+		else if (choice !== 'TOUCH DOOR_CONTROL.EXE' && step == 3) {
+			$main.html('<p>INCORRECT COMMAND. PLEASE CREATE A FILE CALLED DOOR_CONTROL.EXE.</p><p>What will you type?</p>');
+		}
+		else if (choice !== 'OPEN DOOR_CONTROL.EXE' && step == 4) {
+			$main.html('<p>INCORRECT COMMAND. PLEASE OPEN DOOR_CONTROL.EXE. <br> [P.S. YOU ARE REALLY CLOSE TO OPENING THE DOOR, I PROMISE.]</p><p>What will you type?</p>');
+		}
+	}
+
 	// CHILD GO FUNCTIONS
 	function blockWest() {
 		$main.html('<p>You can\'t go that way, there\'s a big metal door in the way. <br> I\'m pretty sure I mentioned the big metal door.</p><p>What will you do?</p>');
@@ -255,7 +291,7 @@ $(function(){
 	}
 
 	function inspectServers() {
-		$main.html('<p>There are a ton of servers with wires running out of them. <br> Behind one of them servers, you can see a metal grate that\'s screwed on tight.</p>');
+		$main.html('<p>There are a ton of servers with wires running out of them. <br> Behind one of the servers, you can see a metal grate that\'s screwed on tight.</p>');
 		serversInspected = true;
 	}
 
@@ -268,10 +304,11 @@ $(function(){
 		doorInspected = true;
 	}
 
-	// CHILD USE FUNCTIONS
-	//function useComputer() {
-	//	aaaaaaaaaaaaaa
-	//}
+	//CHILD USE FUNCTIONS
+	function useComputer() {
+		step = 1;
+		$main.html('<p>The computer boots up and displays the following message:</p><p>WELCOME. TO ACCESS DOOR CONTROLS, PLEASE CHANGE TO DOOR_CONTROL DIRECTORY.</p>What will you type?</p>');
+	}
 
 	function useComputerError() {
 		$main.html('<p>You stare blankly at the computer for several minutes <br> before realising it isn\'t turned on.</p><p>What will you do?</p>');
