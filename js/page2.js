@@ -111,6 +111,9 @@ $(function(){
 		else if (choice == 'TAKE SWITCH' && grateOpen) {
 			takeSwitch();
 		}
+		else if (choice == 'TAKE COMPUTER') {
+			takeComputer();
+		}
 		else {
 			takeWhat();
 		}
@@ -171,6 +174,12 @@ $(function(){
 		else if (choice == 'USE SERVERS') {
 			useServers();
 		}
+		else if (choice == 'USE COMPUTER' && comptuerPowerOn) {
+			useComputer();
+		}
+		else if (choice == 'USE COMPUTER') {
+			useComputerError();
+		}
 		else if (choice == 'USE SWITCH' && grateOpen) {
 			useSwitch();
 		}
@@ -197,6 +206,10 @@ $(function(){
 	}
 
 	// CHILD TAKE FUNCTIONS
+	function takeComputer() {
+		$main.html('<p>Sorry, it\'s bolted down. You thief.</p><p>What will you do?</p>');
+	}
+
 	function takeDesk() {
 		$main.html('<p>The desk is way too heavy to carry. <br> Clearly, you don\'t lift. Pathetic.</p><p>What will you do?</p>');
 	}
@@ -256,6 +269,14 @@ $(function(){
 	}
 
 	// CHILD USE FUNCTIONS
+	//function useComputer() {
+	//	aaaaaaaaaaaaaa
+	//}
+
+	function useComputerError() {
+		$main.html('<p>You stare blankly at the computer for several minutes <br> before realising it isn\'t turned on.</p><p>What will you do?</p>');
+	}
+
 	function useDesk() {
 		$main.html('<p>You sit at the desk and compose a sonnet. <br> It\'s beautiful. <br> You start to cry.</p><p>What will you do?</p>');
 	}
