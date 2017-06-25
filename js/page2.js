@@ -19,7 +19,7 @@ $(function(){
 	var doorInspected = false;
 	var hasScrewdriver = false;
 	var grateOpen = false;
-	var comptuerPowerOn = false;
+	var computerPowerOn = false;
 	var step = 0;
 
   	// FUNCTIONS
@@ -83,7 +83,10 @@ $(function(){
 	// MASTER CHOICE FUNCTIONS
 
 	function goChoices2(choice) {
-		if (choice == 'GO WEST') {
+		if (choice == 'GO WEST' && doorOpen) {
+			goWest();
+		}
+		else if (choice == 'GO WEST') {
 			blockWest();
 		}
 		else if (choice == 'GO EAST' || choice == 'GO NORTH') {
@@ -92,16 +95,16 @@ $(function(){
 		else if (choice == 'GO SOUTH') {
 			blockSouth();
 		}
-		else if (choice == 'GO WEST' && doorOpen) {
-			goWest();
-		}
 		else {
 			goWhere();
 		}
 	}
 
 	function takeChoices2(choice) {
-		if (choice == 'TAKE SCREWDRIVER' && hasScrewdriver) {
+		if (choice == 'TAKE SCREWDRIVER' && grateOpen) {
+			useScrewdriverAgain();
+		}
+		else if (choice == 'TAKE SCREWDRIVER' && hasScrewdriver) {
 			getScrewdriverError();
 		}
 		else if (choice == 'TAKE SCREWDRIVER' && drawerOpen) {
@@ -131,7 +134,10 @@ $(function(){
 	}
 
 	function inspectChoices2(choice) {
-		if (choice == 'INSPECT COMPUTER') {
+		if (choice == 'INSPECT COMPUTER' && computerPowerOn) {
+			inspectComputerAgain();
+		}
+		else if (choice == 'INSPECT COMPUTER') {
 			inspectComputer();
 		}
 		else if (choice == 'INSPECT POWER BUTTON' && computerInspected) {
@@ -191,9 +197,9 @@ $(function(){
 		else if (choice == 'USE SCREWDRIVER' && hasScrewdriver) {
 			useScrewdriver();
 		}
-		else if (choice == 'USE POWER BUTTON' && comptuerPowerOn) {
+		else if (choice == 'USE POWER BUTTON' && computerPowerOn) {
 			usePowerButtonAgain();
-		}		}
+		}
 		else if (choice == 'USE POWER BUTTON' && powerOn) {
 			usePowerButton();
 		}
@@ -206,7 +212,7 @@ $(function(){
 		else if (choice == 'USE COMPUTER' && doorControlsOn) {
 			useComputerAgain();
 		}
-		else if (choice == 'USE COMPUTER' && comptuerPowerOn) {
+		else if (choice == 'USE COMPUTER' && computerPowerOn) {
 			useComputer();
 		}
 		else if (choice == 'USE COMPUTER') {
@@ -303,7 +309,7 @@ $(function(){
 	}
 
 	function getScrewdriverError() {
-		$main.html('<p>You already have the screwdriver. You\'re literally holing it.</p><p>What will you do?</p>');
+		$main.html('<p>You already have the screwdriver. You\'re literally holding it.</p><p>What will you do?</p>');
 	}
 
 	function takeServers() {
@@ -322,6 +328,10 @@ $(function(){
 	function inspectComputer() {
 		$main.html('<p>This computer\'s hardly modern, but it looks functional. <br> The <strong>POWER BUTTON</strong> is off.</p><p>What will you do?</p>');
 		computerInspected = true;
+	}
+
+	function inspectComputerAgain() {
+		$main.html('<p>The computer is up and running.</p><p>What will you do?</p>');
 	}
 
 	function inspectPowerButton() {
@@ -417,7 +427,7 @@ $(function(){
 
 	function usePowerButton() {
 		$main.html('<p>You turn on the power and hear that familiar Windows XP start-up sound. <br> Ah, memories.</p><p>What will you do?</p>');
-		comptuerPowerOn = true;
+		computerPowerOn = true;
 	}
 
 	function usePowerButtonAgain() {
