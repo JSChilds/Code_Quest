@@ -191,6 +191,9 @@ $(function(){
 		else if (choice == 'USE SCREWDRIVER' && hasScrewdriver) {
 			useScrewdriver();
 		}
+		else if (choice == 'USE POWER BUTTON' && comptuerPowerOn) {
+			usePowerButtonAgain();
+		}		}
 		else if (choice == 'USE POWER BUTTON' && powerOn) {
 			usePowerButton();
 		}
@@ -200,14 +203,23 @@ $(function(){
 		else if (choice == 'USE SERVERS') {
 			useServers();
 		}
+		else if (choice == 'USE COMPUTER' && doorControlsOn) {
+			useComputerAgain();
+		}
 		else if (choice == 'USE COMPUTER' && comptuerPowerOn) {
 			useComputer();
 		}
 		else if (choice == 'USE COMPUTER') {
 			useComputerError();
 		}
+		else if (choice == 'USE SWITCH' && powerOn) {
+			usePowerButtonAgain();
+		}
 		else if (choice == 'USE SWITCH' && grateOpen) {
 			useSwitch();
+		}
+		else if (choice == 'USE KEYPAD' && doorOpen) {
+			useKeypadAgain();
 		}
 		else if (choice == 'USE KEYPAD' && doorInspected && doorControlsOn) {
 			useKeypad();
@@ -369,6 +381,10 @@ $(function(){
 		$main.html('<p>You stare blankly at the computer for several minutes <br> before realising it isn\'t turned on.</p><p>What will you do?</p>');
 	}
 
+	function useComputerAgain() {
+		$main.html('<p>There\'s nothing more to do with the computer. <br> Besides, those eerily supportive messages <br> made you too uncomfortable to use it again.</p><p>What will you do?</p>')
+	}
+
 	function useDesk() {
 		$main.html('<p>You sit at the desk and compose a sonnet. <br> It\'s beautiful. <br> You start to cry.</p><p>What will you do?</p>');
 	}
@@ -404,6 +420,10 @@ $(function(){
 		comptuerPowerOn = true;
 	}
 
+	function usePowerButtonAgain() {
+		$main.html('<p>No, you idiot, that\'ll turn the power off again! <br> Just leave it alone. Jeez.</p><p>What will you do?</p>');
+	}
+
 	function useServers() {
 		$main.html('<p>The servers are working fine already.</p><p>What will you do?</p>');
 	}
@@ -420,5 +440,9 @@ $(function(){
 
 	function useKeypadError() {
 		$main.html('<p>You tap buttons on the keypad, but nothing happens. <br> It seems you\'ll have to unlock access to it first.</p><p>What will you do?</p>');
+	}
+
+	function useKeypadAgain() {
+		$main.html('<p>The keypad doesn\'t seem to be responding anymore. <br> Better get moving while you can.</p><p>What will you do?</p>');
 	}
 });
