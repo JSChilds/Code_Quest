@@ -5,6 +5,7 @@ $(function(){
 	// JQUERY VARIABLES
 	var $input = $('input');
 	var $main = $('main');
+	var $h1 = $('h1');
 
 	// ROOM-SPECIFIC VARIABLES
 	var dark = true;
@@ -173,7 +174,7 @@ $(function(){
 	}
 
 	function goNorth() {
-		console.log('go north');
+		window.location.href="page2.html";
 	}
 
 	function northBlock() {
@@ -244,6 +245,7 @@ $(function(){
 
 	function usePhone() {
 		$main.html('<p>You turn on the iPhone &copy (Trademark Apple Computers) ("Think different" &copy).</p><p>The room is illuminated.</p>It is a small dungeon with an old <strong>COMPUTER</strong> in the corner <br> and a large, oak <strong>DOOR</strong> to your <strong>NORTH</strong>.</p><p>What will you do?</p>');
+		$h1.html('A SLIGHTLY LESS DARK ROOM');
 		usedPhone = true;
 		dark = false;
 	}
