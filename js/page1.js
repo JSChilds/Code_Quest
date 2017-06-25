@@ -27,6 +27,7 @@ $(function(){
   	// FUNCTIONS
 
   	// DEFAULT FUNCTIONS
+
 	function error() {
 		$main.html('<p>Sorry, I don\'t recognise that command.</p><p>Please enter a command with <strong>GO</strong>,<strong> INSPECT</strong>,<strong> TAKE</strong> or<strong> USE</strong>, followed by a specified direction or object.');
 	}
@@ -51,20 +52,14 @@ $(function(){
   		if (choice.indexOf('GO') > -1) {
   			goChoices1(choice);
 	    }
-	    else if (choice == 'TAKE') {
-	    	takeWhat();
+	    else if (choice.indexOf('TAKE') > -1) {
+	    	takeChoices1(choice);
 	    }
 	    else if (choice == 'INSPECT') {
 	    	inspectWhat();
 	    }
 	    else if (choice == 'USE') {
 	    	useWhat();
-	    }
-	    else if (choice == 'TAKE IPHONE') {
-	    	getPhone();
-	    }
-	    else if (choice == 'USE IPHONE' && hasPhone) {
-	    	usePhone();
 	    }
 	    else {
 	    	error();
@@ -91,6 +86,18 @@ $(function(){
 		}
 	}
 
+	function takeChoices1(choice) {
+		if (choice == 'TAKE IPHONE' && hasPhone) {
+			errorPhone();
+		}
+		else if (choice == 'TAKE IPHONE') {
+			getPhone();
+		}
+		else {
+			takeWhat();
+		}
+	}
+
 	// CHILD GO FUNCTIONS
 
 	function tooDark() {
@@ -109,10 +116,18 @@ $(function(){
 		$main.html('<p>That way only leads to a dead end.</p>What will you do?</p>');
 	}
 
+	// CHILD TAKE FUNCTIONS
+
 	function getPhone() {
 		$main.html('<p>You pick up the iPhone &copy (Trademark Apple Computers). Everybody thinks you\'re really cool.</p><p>What will you do?</p>');
 		hasPhone = true;
 	}
+
+	function errorPhone() {
+		$main.html('<p>You already have the iPhone &copy. <br> You\'re literally holding it in your hand.</p><p>What will you do?</p>');
+	}
+
+	// CHILD USE FUNCTIONS
 
 	function usePhone() {
 		$main.html('<p>You turn on the iPhone &copy (Trademark Apple Computers) ("Think different" &copy).</p><p>The room is illuminated.</p>It is a small dungeon with an old <strong>COMPUTER</strong> in the corner <br> and a large, oak <strong>DOOR</strong> to your <strong>NORTH</strong>.</p><p>What will you do?</p>');
