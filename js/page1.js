@@ -55,11 +55,11 @@ $(function(){
 	    else if (choice.indexOf('TAKE') > -1) {
 	    	takeChoices1(choice);
 	    }
-	    else if (choice == 'INSPECT') {
-	    	inspectWhat();
+	    else if (choice.indexOf('INSPECT') > -1) {
+	    	inspectChoices1(choice);
 	    }
-	    else if (choice == 'USE') {
-	    	useWhat();
+	    else if (choice.indexOf('USE') > -1) {
+	    	useChoices1(choice);
 	    }
 	    else {
 	    	error();
@@ -88,13 +88,34 @@ $(function(){
 
 	function takeChoices1(choice) {
 		if (choice == 'TAKE IPHONE' && hasPhone) {
-			errorPhone();
+			errorHasPhone();
 		}
 		else if (choice == 'TAKE IPHONE') {
 			getPhone();
 		}
 		else {
 			takeWhat();
+		}
+	}
+
+	function inspectChoices1(choice) {
+		if (choice == 'INSPECT COMPUTER') {
+			inspectComputer();
+		}
+		else {
+			inspectWhat();
+		}
+	}
+
+	function useChoices1(choice) {
+		if (choice == 'USE IPHONE' && usedPhone) {
+			errorUsedPhone();
+		}
+		else if (choice == 'USE IPHONE' && hasPhone) {
+			usePhone();
+		}
+		else {
+			useWhat();
 		}
 	}
 
@@ -127,6 +148,12 @@ $(function(){
 		$main.html('<p>You already have the iPhone &copy. <br> You\'re literally holding it in your hand.</p><p>What will you do?</p>');
 	}
 
+	// CHILD INSPECT FUNCTIONS
+
+	function inspectComputer() {
+		$main.html('It\'s a broken down old PC. <br> Looking at it gives you a pit in your stomach, but you\'re not sure why. <p>Behind the keyboard, you see a small <strong>KEYCARD</strong> with what looks to be your picture on it. <p>What will you do?</p>');
+	}
+
 	// CHILD USE FUNCTIONS
 
 	function usePhone() {
@@ -135,6 +162,9 @@ $(function(){
 		dark = false;
 	}
 
+	function errorUsedPhone() {
+		$main.html('<p>You play Angry Birds for 45 minutes straight. <br> You begin to seriously question what you\'re doing with your life. <p>What will you do?</p>');
+	}
 
 
 
