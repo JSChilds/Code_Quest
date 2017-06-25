@@ -105,6 +105,12 @@ $(function(){
 		else if (choice == 'TAKE SERVERS') {
 			takeServers();
 		}
+		else if (choice == 'TAKE POWER BUTTON' && computerInspected) {
+			takePowerButton();
+		}
+		else if (choice == 'TAKE SWITCH' && grateOpen) {
+			takeSwitch();
+		}
 		else {
 			takeWhat();
 		}
@@ -132,6 +138,9 @@ $(function(){
 		else if (choice == 'INSPECT SCREWDRIVER' && drawerOpen) {
 			inspectScrewdriver();
 		}
+		else if (choice == 'INSPECT SWITCH' && grateOpen) {
+			inspectSwitch();
+		}
 		else {
 		inspectWhat();
 		}
@@ -153,14 +162,17 @@ $(function(){
 		else if (choice == 'USE SCREWDRIVER' && grateOpen) {
 			useScrewdriverAgain();
 		}
-		else if (choice == 'USE POWER BUTTON' && computerInspected) {
-			usePowerButtonError();
-		}
 		else if (choice == 'USE POWER BUTTON' && powerOn) {
 			usePowerButton();
 		}
+		else if (choice == 'USE POWER BUTTON' && computerInspected) {
+			usePowerButtonError();
+		}
 		else if (choice == 'USE SERVERS') {
 			useServers();
+		}
+		else if (choice == 'USE SWITCH' && grateOpen) {
+			useSwitch();
 		}
 		else {
 			useWhat();
@@ -198,6 +210,14 @@ $(function(){
 		$main.html('<p>You feel like unplugging any of these would be a bad idea. <br> Best just leave them where they are.</p><p>What will you do?</p>');
 	}
 
+	function takePowerButton() {
+		$main.html('<p>You\'d have to snap it off and then the game might be unplayable, <br> so you\'d better not.</p><p>What will you do?</p>');
+	}
+
+	function takeSwitch() {
+		$main.html('<p>You try to wrestle the switch off of the wall, but to no avail. <br> What an utter waste of time.</p><p>What will you do?</p>');
+	}
+
 	// CHILD INSPECT FUNCTIONS
 	function inspectComputer() {
 		$main.html('<p>This computer\'s hardly modern, but it looks functional. <br> The <strong>POWER BUTTON</strong> is off.</p><p>What will you do?</p>');
@@ -227,7 +247,7 @@ $(function(){
 	}
 
 	function inspectSwitch() {
-		$main.html('<p>It\'s a simple switch. <br> It goes on or off. That\'s it. <br> I\'m starting to suspect you may not be too bright.</p>');
+		$main.html('<p>It\'s a simple switch. <br> It goes on or off. That\'s it. <br> I\'m starting to suspect you may not be too bright.</p><p>What will you do?</p>');
 	}
 
 	function inspectDoor() {
@@ -245,7 +265,7 @@ $(function(){
 	}
 
 	function useScrewdriver() {
-		$main.html('<p>You carefully unscrew the metal grate to reveal a switch, <br> breaking the flimsy screwdriver in the proccess. <br> Why there was a metal grate in the way of a switch you don\'t know, <br> it\'s almost like it was just there to waste your time. <br> Hmm.</p><p>What will you do?</p>');
+		$main.html('<p>You carefully unscrew the metal grate to reveal a <strong>SWITCH</strong>, <br> breaking the flimsy screwdriver in the proccess. <br> Why there was a metal grate in the way of a switch you don\'t know, <br> it\'s almost like it was just there to waste your time. <br> Hmm.</p><p>What will you do?</p>');
 		grateOpen = true;
 	}
 
@@ -270,6 +290,10 @@ $(function(){
 		$main.html('<p>The servers are working fine already.</p><p>What will you do?</p>');
 	}
 
+	function useSwitch() {
+		$main.html('<p>You flick the switch on. <br> Sparks fly as power rushes through a cable <br> to the computer in the middle of the room.</p><p>What will you do?</p>');
+		powerOn = true;
+	}
 	// function openDoor() {
 	// 	$main.html('<p>The door slides upward, opening the path to the <strong>WEST</strong>. <br> You better hurry through in case it closes on you and crushes you to death. <br> Or don\'t. Whatever.</p><p>What will you do?</p>');
 	// }
