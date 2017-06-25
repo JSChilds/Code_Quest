@@ -8,6 +8,8 @@ $(function(){
 	var $h1 = $('h1');
 
 	// ROOM-SPECIFIC VARIABLES
+	var doorOpen = false;
+	var powerOn = false;
 
   	// FUNCTIONS
 
@@ -67,7 +69,21 @@ $(function(){
 	// MASTER CHOICE FUNCTIONS
 
 	function goChoices2(choice) {
-		goWhere();
+		if (choice == 'GO WEST') {
+			blockWest();
+		}
+		else if (choice == 'GO EAST' || choice == 'GO NORTH') {
+			noGo();
+		}
+		else if (choice == 'GO SOUTH') {
+			blockSouth();
+		}
+		else if (choice == 'GO WEST' && doorOpen) {
+			goWest();
+		}
+		else {
+			goWhere();
+		}
 	}
 
 	function takeChoices2(choice) {
@@ -83,6 +99,21 @@ $(function(){
 	}
 
 	// CHILD GO FUNCTIONS
+	function blockWest() {
+		$main.html('<p>You can\'t go that way, there\'s a big metal door in the way. <br> I\'m pretty sure I mentioned the big metal door.</p><p>What will you do?</p>');
+	}
+
+	function blockSouth() {
+		$main.html('<p>The oak door is shut tight, you won\'t be able to go back that way. <br> Bit of a design flaw, really.</p><p>What will you do?</p>');
+	}
+
+	function noGo() {
+		$main.html('<p>You walk down an endless corridor of servers for about 10 minutes <br> before giving up and turning back.</p><p>What will you do?</p>')
+	}
+
+	function goWest() {
+		window.location.href="page3.html";
+	}
 
 	// CHILD TAKE FUNCTIONS
 
@@ -90,4 +121,8 @@ $(function(){
 
 	// CHILD USE FUNCTIONS
 
+	// function openDoor() {
+	// 	$main.html('<p>The door slides upward, opening the path to the <strong>WEST</strong>. <br> You better hurry through in case it closes on you and crushes you to death. <br> Or don\'t. Whatever.</p><p>What will you do?</p>');
+	// }
+	// doorOpen = true;
 });
