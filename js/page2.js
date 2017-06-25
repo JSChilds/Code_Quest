@@ -149,6 +149,12 @@ $(function(){
 		else if (choice == 'INSPECT SWITCH' && grateOpen) {
 			inspectSwitch();
 		}
+		else if (choice == 'INSPECT KEYPAD' && doorControlsOn) {
+			inspectKeypad();
+		}
+		else if (choice == 'INSPECT KEYPAD') {
+			inspectKeypadError();
+		}
 		else {
 		inspectWhat();
 		}
@@ -164,11 +170,11 @@ $(function(){
 		else if (choice == 'USE SCREWDRIVER' && hasScrewdriver && !serversInspected) {
 			useScrewdriverError();
 		}
-		else if (choice == 'USE SCREWDRIVER' && hasScrewdriver) {
-			useScrewdriver();
-		}
 		else if (choice == 'USE SCREWDRIVER' && grateOpen) {
 			useScrewdriverAgain();
+		}
+		else if (choice == 'USE SCREWDRIVER' && hasScrewdriver) {
+			useScrewdriver();
 		}
 		else if (choice == 'USE POWER BUTTON' && powerOn) {
 			usePowerButton();
@@ -188,6 +194,15 @@ $(function(){
 		else if (choice == 'USE SWITCH' && grateOpen) {
 			useSwitch();
 		}
+		else if (choice == 'USE KEYPAD' && doorInspected && doorControlsOn) {
+			useKeypad();
+		}
+		else if (choice == 'USE KEYPAD' && doorInspected) {
+			useKeypadError();
+		}
+		else if (choice == 'USE DOOR') {
+			useDoor();
+		}
 		else {
 			useWhat();
 		}
@@ -204,10 +219,11 @@ $(function(){
 		}
 		else if (choice == 'TOUCH DOOR_CONTROL.EXE' && step == 3) {
 			step = 4;
-			$main.html('<p>DOOR_CONTROL.EXE CREATED. <br> DOOR_CONTROL.EXE LINKED WITH DOOR_CONTROLS. <br> PLEASE OPEN DOOR_CONTROLS.EXE TO ACCESS DOOR CONTROLS.</p><p>What will you type?');
+			$main.html('<p>DOOR_CONTROL.EXE CREATED. <br> DOOR_CONTROL.EXE LINKED WITH DOOR_CONTROLS. <br> PLEASE OPEN DOOR_CONTROL.EXE TO ACCESS DOOR CONTROLS.</p><p>What will you type?');
 		}
 		else if (choice == 'OPEN DOOR_CONTROL.EXE' && step == 4) {
 			step = 0;
+			doorControlsOn = true;
 			$main.html('<p>DOOR CONTROLS INITIATED. YOU ARE SMART AND BEAUTIFUL <br> AND ALL THE OTHER KIDS ARE JEALOUS OF YOU. <br> GOODBYE XXX ;)</p><p>The eerily supportive computer switches off. <br> You better go check the door.</p><p>What will you do?</p>');
 		}
 		else if (choice !== 'CD DOOR_CONTROL' && step == 1) {
@@ -300,11 +316,23 @@ $(function(){
 	}
 
 	function inspectDoor() {
-		$main.html('<p>')
+		$main.html('<p>It\'s a thick, metal door. Next to it is a KEYPAD</p><p>What will you do?</p>');
 		doorInspected = true;
 	}
 
+	function inspectKeypad() {
+		$main.html('<p>The keypad reads "READY"</p><p>What will you do?</p>');
+	}
+
+	function inspectKeypadError() {
+		$main.html('<p>The keypad reads "LOCKED".</p><p>What will you do?</p>');
+	}
+
 	//CHILD USE FUNCTIONS
+	function useDoor() {
+		$main.html('<p>There\'s nothing to use. It\'s just a door. Duh.</p><p>What will you do?</p>');
+	}
+
 	function useComputer() {
 		step = 1;
 		$main.html('<p>The computer boots up and displays the following message:</p><p>WELCOME. TO ACCESS DOOR CONTROLS, PLEASE CHANGE TO DOOR_CONTROL DIRECTORY.</p>What will you type?</p>');
@@ -328,7 +356,7 @@ $(function(){
 	}
 
 	function useScrewdriverError() {
-		$main.html('<p>You\'d better find something to use it on first, don\'t you think?');
+		$main.html('<p>You\'d better find something to use it on first, don\'t you think?</p><p>What will you do?</p>');
 	}
 
 	function useScrewdriverAgain() {
@@ -352,8 +380,13 @@ $(function(){
 		$main.html('<p>You flick the switch on. <br> Sparks fly as power rushes through a cable <br> to the computer in the middle of the room.</p><p>What will you do?</p>');
 		powerOn = true;
 	}
-	// function openDoor() {
-	// 	$main.html('<p>The door slides upward, opening the path to the <strong>WEST</strong>. <br> You better hurry through in case it closes on you and crushes you to death. <br> Or don\'t. Whatever.</p><p>What will you do?</p>');
-	// }
-	// doorOpen = true;
+	
+	function useKeypad() {
+		$main.html('<p>You press enter on the keypad. It reads "door.slideUp();". <br> The door slides upward, opening the path to the <strong>WEST</strong>. <br> You better hurry through in case it closes on you and crushes you to death. <br> Or don\'t. Whatever.</p><p>What will you do?</p>');
+		doorOpen = true;
+	}
+
+	function useKeypadError() {
+		$main.html('<p>You tap buttons on the keypad, but nothing happens. <br> It seems you\'ll have to unlock access to it first.</p><p>What will you do?</p>');
+	}
 });
