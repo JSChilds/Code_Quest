@@ -101,12 +101,21 @@ $(function(){
 	// 	}
 	// }
 
-	// function inspectChoices1(choice) {
-	
-	// 	else {
-	// 		inspectWhat();
-	// 	}
-	// }
+	function inspectChoices1(choice) {
+		if (choice == 'INSPECT WHITEBOARD' && atSouth) {
+			inspectWhiteboard();
+		}
+		else if (choice == 'INSPECT SIGN' && atSouth) {
+			inspectSign();
+		}
+		else if (choice == 'INSPECT LAPTOP' && atSouth) {
+			inspectLaptop();
+		}
+		//else if (choice == '')
+		else {
+			inspectWhat();
+		}
+	}
 
 	// function useChoices1(choice) {
 		
@@ -141,6 +150,17 @@ $(function(){
 
 
 	// CHILD INSPECT FUNCTIONS
+	function inspectWhiteboard() {
+		$main.html('<p>It\'s a whiteboard with lots of diagrams and technical language <br> that you don\'t really understand, but feel like <br> you\'d be good at pretending that you do. <p>"USERNAME: ADMIN1" is written in large letters</p><p>What will you do?</p>');
+	}
+
+	function inspectSign() {
+		$main.html('<p>On the wall in big, white letters it says:</p> "CODEQUEST - We make your dreams come true"</p><p>You can\'t put your finger on why, <br> but this seems really self-indulgent.</p><p>What will you do?</p>');
+	}
+
+	function inspectLaptop() {
+		$main.html('<p>It\'s a brand-new, state of the art laptop. <br> Fully-charged. Dope graphics card. <br> Totally rad stickers of flames on the back. <br> Nice.</p><p>What will you do?');
+	}
 
 
 	// CHILD USE FUNCTIONS
