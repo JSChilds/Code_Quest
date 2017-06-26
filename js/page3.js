@@ -114,11 +114,11 @@ $(function(){
 		else if (choice == 'TAKE WATER COOLER' && atNorth) {
 			takeWaterCooler();
 		}
-		else if (choice == 'TAKE PAPER BALL' && waterCoolerUsed) {
-			getPaperBall();
-		}
 		else if (choice == 'TAKE PAPER BALL' && hasPaperBall) {
-			takePaperBallError();
+			getPaperBallError();
+		}
+		else if (choice == 'TAKE PAPER BALL' && waterCoolerUsed && !hasPaperBall) {
+			getPaperBall();
 		}
 		else {
 			takeWhat();
@@ -144,23 +144,40 @@ $(function(){
 		else if (choice == 'INSPECT FOOSBALL TABLE' && atNorth) {
 			inspectFoosballTable();
 		}
+		else if (choice == 'INSPECT PAPER BALL' && hasPaperBall) {
+			inspectPaperBall();
+		}
 		else if (choice == 'INSPECT PAPER BALL' && atNorth && waterCoolerUsed) {
 			inspectPaperBallError();
-		}
-		else if (choice == 'INSPECT PAPER BALL' && atNorth && hasPaperBall) {
-			inspectPaperBall();
 		}
 		else {
 			inspectWhat();
 		}
 	}
 
-	// function useChoices3(choice) {
-		
-	// 	else {
-	// 		useWhat();
-	// 	}
-	// }
+	function useChoices3(choice) {
+		if (choice == 'USE BEAN BAG CHAIR' && atNorth) {
+			useBeanBag();
+		}
+		else if (choice == 'USE FOOSBALL TABLE' && atNorth) {
+			useFoosballTable();
+		}
+		else if (choice == 'USE WATER COOLER' && atNorth && hasPaperBall) {
+			useWaterCoolerAgain();
+		}
+		else if (choice == 'USE WATER COOLER' && atNorth) {
+			useWaterCooler();
+		}
+		else if (choice == 'USE PAPER BALL' && hasPaperBall) {
+			usePaperBall();
+		}
+		else if (choice == 'USE PAPER BALL' && atNorth && waterCoolerUsed) {
+			usePaperBallError();
+		}
+		else {
+			useWhat();
+		}
+	}
 
 	// CHILD GO FUNCTIONS
 	function goNorth() {
@@ -208,12 +225,13 @@ $(function(){
 		$main.html('<p>You pick up the water cooler and the jug falls out, <br> spilling water everywhere. <br> Nice one, genius.</p><p>What will you do?</p>');
 	}
 
-	function takePaperBall() {
-		$main.html('<p>You pick up the paper ball. (Ugh, it\'s soggy.) <img src="../images/paperball.jpg"/> You uncrumple it. There seems to be something written on it...</p><p>What will you do?');
+	function getPaperBall() {
+		$main.html('<p>You pick up the paper ball. (Ugh, it\'s soggy.)</p><img style="height: 295px" src="../images/paperball.jpg"/> <p>You uncrumple it. There seems to be something written on it...</p><p>What will you do?');
+		hasPaperBall = true;
 	}
 
-	function takePaperBallError() {
-		$main.html('<p>You already have the paper ball. <br> Please stop trying to break my game.</p>');
+	function getPaperBallError() {
+		$main.html('<p>You already have the paper ball. <br> Please stop trying to break my game.</p><p>What will you do?</p>');
 	}
 
 	// CHILD INSPECT FUNCTIONS
@@ -242,7 +260,7 @@ $(function(){
 	}
 
 	function inspectPaperBallError() {
-		$main.html('<p>It\s a crumpled it paper ball. I just told you that. <br> What did you think was going to change? <br> PICK IT UP.</p><p>What will you do?');
+		$main.html('<p>It\'s a crumpled up paper ball clogging the water cooler. <br> I just told you that. What did you think was going to change? <br> PICK IT UP FIRST.</p><p>What will you do?');
 	}
 
 	function inspectPaperBall() {
@@ -251,12 +269,30 @@ $(function(){
 
 	// CHILD USE FUNCTIONS
 
+	function useBeanBag() {
+		$main.html('<p>You sit in the bean bag chair and feel something moist. <br> You shudder.</p><p>What will you do?');
+	}
 
+	function useFoosballTable() {
+		$main.html('<p>You play foosball with yourself for a little while. <br> How terribly sad.</p><p>What will you do?</p>');
+	}
 
+	function useWaterCooler() {
+		$main.html('<p>You turn on the water cooler, but it\'s clogged. <br> Upon closer inspection, there is a <strong>PAPER BALL</strong> wedged inside it.</p><p>What will you do?');
+		waterCoolerUsed = true;
+	}
 
+	function useWaterCoolerAgain() {
+		$main.html('<p>The clog now cleared, you pour yourself a nice, refreshing cup of water. <br> Really hits the spot. <br> Now back to work.</p><p>What will you do?</p>');
+	}
 
+	function usePaperBall() {
+		$main.html('<p>The paper balll creates a wormhole to another dimension <br> and you find yourself trapped in a horrible nightmare realm <br> filled with demons made of your deepest fears.<p>GAME OVER</p><p>Just kidding, it actually does nothing because it\'s just a paper ball.</p>What will you do?</p>');
+	}
 
-
+	function usePaperBallError() {
+		$main.html('<p>It\'s clogged in the water cooler, <br> better take it out first.</p><p>What will you do?</p>');
+	}
 
 
 
