@@ -105,6 +105,21 @@ $(function(){
 		else if (choice == 'TAKE SIGN' && atSouth) {
 			takeSign();
 		}
+		else if (choice == 'TAKE BEAN BAG CHAIR' && atNorth) {
+			takeBeanBag();
+		}
+		else if (choice == 'TAKE FOOSBALL TABLE' && atNorth) {
+			takeFoosballTable();
+		}
+		else if (choice == 'TAKE WATER COOLER' && atNorth) {
+			takeWaterCooler();
+		}
+		else if (choice == 'TAKE PAPER BALL' && waterCoolerUsed) {
+			getPaperBall();
+		}
+		else if (choice == 'TAKE PAPER BALL' && hasPaperBall) {
+			takePaperBallError();
+		}
 		else {
 			takeWhat();
 		}
@@ -165,7 +180,7 @@ $(function(){
 	}
 
 	function noGoSouth() {
-		$main.html('<p>I already told you the door to the south closed. <br> Please stop trying to break my game.</p><p>What will you do?</p>');
+		$main.html('<p>I already told you the door to the south is closed.</p><p>What will you do?</p>');
 	}
 
 	// CHILD TAKE FUNCTIONS
@@ -179,6 +194,26 @@ $(function(){
 
 	function takeLaptop() {
 		$main.html('<p>I dunno, this laptop looks really expensive. <br> I think you should just leave it on the table, <br> or you might drop it. <br> That seems like something you\'d do.</p>What will you do?</p>');
+	}
+
+	function takeBeanBag() {
+		$main.html('<p>There\'s a weird looking stain on the chair <br> and you don\'t want to touch it.</p><p>What will you do?</p>');
+	}
+
+	function takeFoosballTable() {
+		$main.html('<p>You try to put the foosball table in your pocket, but you can\'t. <br> BECAUSE IT\'S A TABLE.</p><p>What will you do?');
+	}
+
+	function takeWaterCooler() {
+		$main.html('<p>You pick up the water cooler and the jug falls out, <br> spilling water everywhere. <br> Nice one, genius.</p><p>What will you do?</p>');
+	}
+
+	function takePaperBall() {
+		$main.html('<p>You pick up the paper ball. (Ugh, it\'s soggy.) <img src="../images/paperball.jpg"/> You uncrumple it. There seems to be something written on it...</p><p>What will you do?');
+	}
+
+	function takePaperBallError() {
+		$main.html('<p>You already have the paper ball. <br> Please stop trying to break my game.</p>');
 	}
 
 	// CHILD INSPECT FUNCTIONS
