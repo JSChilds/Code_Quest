@@ -56,16 +56,16 @@ $(function(){
 	function checkChoice(choice) {
 		choice = choice.toUpperCase();
   		if (choice.indexOf('GO') > -1) {
-  			goChoices1(choice);
+  			goChoices3(choice);
 	    }
 	    else if (choice.indexOf('TAKE') > -1) {
-	    	takeChoices1(choice);
+	    	takeChoices3(choice);
 	    }
 	    else if (choice.indexOf('INSPECT') > -1) {
-	    	inspectChoices1(choice);
+	    	inspectChoices3(choice);
 	    }
 	    else if (choice.indexOf('USE') > -1) {
-	    	useChoices1(choice);
+	    	useChoices3(choice);
 	    }
 	    else {
 	    	error();
@@ -74,7 +74,7 @@ $(function(){
 
 	// MASTER CHOICE FUNCTIONS
 
-	function goChoices1(choice) {
+	function goChoices3(choice) {
 		if (choice == 'GO NORTH' && atSouth) {
 			goNorth();
 		}
@@ -95,14 +95,22 @@ $(function(){
 		}
 	}
 
-	// function takeChoices1(choice) {
-	
-	// 	else {
-	// 		takeWhat();
-	// 	}
-	// }
+	function takeChoices3(choice) {
+		if (choice == 'TAKE WHITEBOARD' && atSouth) {
+			takeWhiteboard();
+		}
+		else if (choice == 'TAKE LAPTOP' && atSouth) {
+			takeLaptop();
+		}
+		else if (choice == 'TAKE SIGN' && atSouth) {
+			takeSign();
+		}
+		else {
+			takeWhat();
+		}
+	}
 
-	function inspectChoices1(choice) {
+	function inspectChoices3(choice) {
 		if (choice == 'INSPECT WHITEBOARD' && atSouth) {
 			inspectWhiteboard();
 		}
@@ -132,7 +140,7 @@ $(function(){
 		}
 	}
 
-	// function useChoices1(choice) {
+	// function useChoices3(choice) {
 		
 	// 	else {
 	// 		useWhat();
@@ -161,8 +169,17 @@ $(function(){
 	}
 
 	// CHILD TAKE FUNCTIONS
+	function takeWhiteboard() {
+		$main.html('<p>The whiteboard is on the wall, it\'s not for taking. <br> Bad player. Bad.</p>What will you do?</p>');
+	}
 
+	function takeSign() {
+		$main.html('<p>Okay, did you really think you were going <br> to be able to take the sign? Really? <br> Come on, this is just getting ridiculous now.</p><p>What will you do?');
+	}
 
+	function takeLaptop() {
+		$main.html('<p>I dunno, this laptop looks really expensive. <br> I think you should just leave it on the table, <br> or you might drop it. <br> That seems like something you\'d do.</p>What will you do?</p>');
+	}
 
 	// CHILD INSPECT FUNCTIONS
 	function inspectWhiteboard() {
@@ -194,7 +211,7 @@ $(function(){
 	}
 
 	function inspectPaperBall() {
-		$main.html('<p>On the paper, you can barely make out the phrase "m0rph3u5".</p>');
+		$main.html('<p>On the paper, you can barely make out the phrase "m0rph3u5".</p><p>What will you do?</p>');
 	}
 
 	// CHILD USE FUNCTIONS
