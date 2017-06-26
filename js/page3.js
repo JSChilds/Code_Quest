@@ -13,6 +13,7 @@ $(function(){
 	var option = 0;
 	var atSouth = true;
 	var atNorth = false;
+	var waterCoolerUsed = false;
 
 
 	$input.keydown(getInput);
@@ -111,7 +112,21 @@ $(function(){
 		else if (choice == 'INSPECT LAPTOP' && atSouth) {
 			inspectLaptop();
 		}
-		//else if (choice == '')
+		else if (choice == 'INSPECT WATER COOLER' && atNorth) {
+			inspectWaterCooler();
+		}
+		else if (choice == 'INSPECT BEAN BAG CHAIR' && atNorth) {
+			inspectBeanBag();
+		}
+		else if (choice == 'INSPECT FOOSBALL TABLE' && atNorth) {
+			inspectFoosballTable();
+		}
+		else if (choice == 'INSPECT PAPER BALL' && atNorth && waterCoolerUsed) {
+			inspectPaperBallError();
+		}
+		else if (choice == 'INSPECT PAPER BALL' && atNorth && hasPaperBall) {
+			inspectPaperBall();
+		}
 		else {
 			inspectWhat();
 		}
@@ -162,6 +177,25 @@ $(function(){
 		$main.html('<p>It\'s a brand-new, state of the art laptop. <br> Fully-charged. Dope graphics card. <br> Totally rad stickers of flames on the back. <br> Nice.</p><p>What will you do?');
 	}
 
+	function inspectWaterCooler() {
+		$main.html('<p>It\'s a fairly standard water cooler. Yep. Nothing to see here.</p><p>What will you do?</p>')
+	}
+
+	function inspectBeanBag() {
+		$main.html('<p>It\'s a big, fluffy bean bag chair.<br>There\'s a supsicious-looking stain on it.<br>Eww.</p><p>What will you do?');
+	}
+
+	function inspectFoosballTable() {
+		$main.html('<p>It\'s a foosball table. Looking at it makes you angry. <br> Why is this here? Who wants this? Stupid.</p>What will you do?</p>');
+	}
+
+	function inspectPaperBallError() {
+		$main.html('<p>It\s a crumpled it paper ball. I just told you that. <br> What did you think was going to change? <br> PICK IT UP.</p><p>What will you do?');
+	}
+
+	function inspectPaperBall() {
+		$main.html('<p>On the paper, you can barely make out the phrase "m0rph3u5".</p>');
+	}
 
 	// CHILD USE FUNCTIONS
 
