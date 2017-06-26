@@ -39,3 +39,13 @@ input {
 	background-color: black;
 	outline-color: green;
 }
+
+/*.selected {
+	color: grey;
+	text-decoration: line-through;
+	display: show;
+}
+
+.hidden {
+	display: none;
+}*/

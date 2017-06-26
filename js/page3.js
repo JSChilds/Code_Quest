@@ -14,6 +14,11 @@ $(function(){
 	var atSouth = true;
 	var atNorth = false;
 	var waterCoolerUsed = false;
+	var choiceA = false;
+	var choiceB = false;
+	var choiceC = false;
+	var choiceD = false;
+
 
 
 	$input.keydown(getInput);
@@ -55,7 +60,10 @@ $(function(){
 
 	function checkChoice(choice) {
 		choice = choice.toUpperCase();
-		if (part > 0) {
+		if (part >= 4) {
+			divFightEnd(choice);
+		}
+		else if (part > 0) {
 			divFightChoices(choice);
 		}
 		else if (step > 0) {
@@ -214,7 +222,80 @@ $(function(){
 
 	function divFightChoices(choice) {
 		if (choice == 'NEXT' && part == 1) {
-			$main.html('<p>The div waits patiently.</p><div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to hide!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) PANIC!!!!!</p><p>Which option will you choose?</p>');	
+			$main.html('<p>The div is waiting patiently.</p><div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to hide!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
+			part = 2;
+		}
+		else if (choice == 'A' && part == 2) {
+			$main.html('<p>It won\'t move!</p><div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to hide!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
+			choiceA = true;
+			divFightCheck(choice);
+		}
+		else if (choice == 'B' && part == 2) {
+			$main.html('<p>It\'s still there, taunting you!</p><div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to hide!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
+			choiceB = true;
+			divFightCheck(choice);
+		}
+		else if (choice == 'C' && part == 2) {
+			$main.html('<p>The height and width don\'t change at all!</p><div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to hide!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
+			choiceC = true;
+			divFightCheck(choice);
+		}
+		else if (choice == 'D' && part == 2) {
+			$main.html('<p>W-why did you think that would work...</p><div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to hide!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
+			$main.css('font-family', 'Comic Sans MS');
+			choiceD = true;
+			divFightCheck(choice);
+		}
+	}
+
+	function divFightCheck(choice) {
+		if (choiceA && choiceB && choiceC && choiceD) {
+			if (choice == 'A') {
+				$main.css('font-family', 'courier new')
+				part = 4;
+				$main.html('<p>It won\'t move!</p><div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p>You\'re all out of options! You\'re doomed! Doomed! <br> ..........oh, wait... you were targeting the wrong div...</p><p>.........</p><p>E) Select correct div.</p>Which option will you choose?</p>');	
+			}
+			else if (choice == 'B') {
+				$main.css('font-family', 'courier new')
+				part = 4;
+				$main.html('<p>It\'s still there, taunting you!</p><div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p>You\'re all out of options! You\'re doomed! Doomed! <br> ..........oh, wait... you were targeting the wrong div...</p><p>.........</p><p>E) Select correct div.</p>Which option will you choose?</p>');	
+			}
+			else if (choice == 'C') {
+				$main.css('font-family', 'courier new')
+				part = 4;
+				$main.html('<p>The height and width don\'t change at all!</p><div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p>You\'re all out of options! You\'re doomed! Doomed! <br> ..........oh, wait... you were targeting the wrong div...</p><p>.........</p><p>E) Select correct div.</p>Which option will you choose?</p>');	
+			}
+			else if (choice == 'D') {
+				$main.css('font-family', 'Comic Sans MS');
+				part = 4;
+				$main.html('<p>W-Why did you think that would work...</p><div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p>You\'re all out of options! You\'re doomed! Doomed! <br> ..........oh, wait... you were targeting the wrong div...</p><p>.........</p><p>E) Select correct div.</p>Which option will you choose?</p>');	
+			}
+		}
+		else {
+			divFightChoices();
+		}
+	}
+
+	function divFightEnd(choice) {
+		if (choice == 'E') {
+			part = 5;
+			$main.css('font-family', 'courier new');
+			$main.html('<h2>YOU WIN!</h2><p>The div disappears!</p><p>HTML level up! CSS level up!</p><p>You learnt new skill: "BASIC READING COMPREHENSION"!</p><p>(Type "NEXT" to continue.)');
+		}
+		else if (choice == 'NEXT' && part == 5) {
+			part = 6;
+			$main.html('<p>Suddenly, everything seems clear to you, <br> like you\'ve found the answer you\'ve been looking for.</p>In your mind, a bright door of light opens to the <strong>EAST</strong>...</p><p>What will you do?</p>');
+		}
+		else if (choice == 'EAST' && part == 6) {
+			goEast();
+		}
+		else if (choice !== 'EAST' && part == 6) {
+			$main.html('<p>There\'s nothing more to do than to go <strong>EAST</strong>...<p>What will you do?</p>');
+		}
+		else if (choice !== 'E' && part == 4) {
+			$main.css('font-family', 'courier new');
+			$main.html('<p>........seriously? <br> Come on, man, just type "E".</p><p>Which option will you choose?</p>');
+			divFightEnd();
 		}
 	}
 
@@ -237,6 +318,10 @@ $(function(){
 
 	function noGoSouth() {
 		$main.html('<p>I already told you the door to the south is closed.</p><p>What will you do?</p>');
+	}
+
+	function goEast() {
+		window.location.href="page4.html";
 	}
 
 	// CHILD TAKE FUNCTIONS
