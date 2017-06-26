@@ -10,7 +10,7 @@ $(function(){
 	// ROOM-SPECIFIC VARIABLES
 	var hasPaperBall = false;
 	var step = 0;
-	var option = 0;
+	var part = 0;
 	var atSouth = true;
 	var atNorth = false;
 	var waterCoolerUsed = false;
@@ -55,7 +55,13 @@ $(function(){
 
 	function checkChoice(choice) {
 		choice = choice.toUpperCase();
-  		if (choice.indexOf('GO') > -1) {
+		if (part > 0) {
+			divFightChoices(choice);
+		}
+		else if (step > 0) {
+			laptopChoices(choice);
+		}
+  		else if (choice.indexOf('GO') > -1) {
   			goChoices3(choice);
 	    }
 	    else if (choice.indexOf('TAKE') > -1) {
@@ -174,8 +180,41 @@ $(function(){
 		else if (choice == 'USE PAPER BALL' && atNorth && waterCoolerUsed) {
 			usePaperBallError();
 		}
+		else if (choice == 'USE LAPTOP') {
+			useLaptop();
+		}
 		else {
 			useWhat();
+		}
+	}
+
+	function laptopChoices(choice) {
+		if (choice == 'ADMIN1' && step == 1) {
+			$main.html('<p>The laptop reads:</p> <p> ADMIN1, ENTER PASSWORD OR "QUIT" TO EXIT.</p><p>What will you type?');
+			step = 2;
+		}
+		else if (choice == 'M0RPH3U5' && step == 2) {
+			$main.html('<p>The laptop reads:</p> <p>WELCOME, ADMIN1</p><p>A page loads, it looks like a webpage with the console open...</p> <p>(Type "NEXT" to continue.)</p>');
+			step = 3;
+		}
+		else if (choice == 'NEXT' && step == 3) {
+			divFight();
+		}
+		else if (choice == 'QUIT') {
+			$main.html('<p>You stopped using the laptop.</p><p>What will you do?');
+			step = 0;
+		}
+		else if (choice !== 'ADMIN 1' && step == 1) {
+			$main.html('<p>The laptop reads:</p><p>UNIDENTIFIED USERNAME. <br> ENTER VALID USERNAME OR "QUIT" TO EXIT.</p><p>What will you type?');
+		}
+		else if (choice !== 'M0RPH3U5' && step == 2) {
+			$main.html('<p>The laptop reads:</p><p>INCORRECT PASSWORD. <br> ENTER CORRECT PASSWORD OR "QUIT" TO EXIT.</p><p>What will you type?</p>');
+		}
+	}
+
+	function divFightChoices(choice) {
+		if (choice == 'NEXT' && part == 1) {
+			$main.html('<p>The div waits patiently.</p><div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to hide!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) PANIC!!!!!</p><p>Which option will you choose?</p>');	
 		}
 	}
 
@@ -294,7 +333,16 @@ $(function(){
 		$main.html('<p>It\'s clogged in the water cooler, <br> better take it out first.</p><p>What will you do?</p>');
 	}
 
+	function useLaptop() {
+		$main.html('<p>The laptop reads:</p><p>ENTER USERNAME <br> OR "QUIT" TO EXIT.</p><p>What will you type?</p>');
+		step = 1;
+	}
 
+	function divFight() {
+		$main.html('<p>...suddenly, a stray div attacks!</p><div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p>Hurry, get rid of it!</p><p>(Type "NEXT" to continue.)');
+		step = 0;
+		part = 1;
+	}
 
 
 
