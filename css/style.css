@@ -1,7 +1,7 @@
 body {
 	text-align: center;
 	background-color: black;
-	color: green;
+	color: lawngreen;
 	font-family: "Courier New";
 }
 
@@ -20,7 +20,7 @@ h1 {
 
 a {
 	text-decoration: none;
-	color: green;
+	color: lawngreen;
 	font-family: "Courier New";
 	font-size: 16px;
 }
@@ -33,11 +33,11 @@ button {
 input {
 	width: 290px;
 	font-size: 20px;
-	color: green;
+	color: lawngreen;
 	font-family: "Courier New";
-	border-color: green;
+	border-color: lawngreen;
 	background-color: black;
-	outline-color: green;
+	outline-color: lawngreen;
 }
 
 /*.selected {

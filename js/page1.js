@@ -35,22 +35,22 @@ $(function(){
   	// DEFAULT FUNCTIONS
 
 	function error() {
-		$main.html('<p>Sorry, I don\'t recognise that command.</p><p>Please enter a command with <strong>GO</strong>,<strong> INSPECT</strong>,<strong> TAKE</strong> or<strong> USE</strong>, followed by a specified direction or object.');
+		$main.html('<p>Sorry, I don\'t recognise that command.</p><p>Please enter a command with <strong>GO</strong>,<strong> INSPECT</strong>,<strong> TAKE</strong> or<strong> USE</strong>, <br> followed by a specified direction or object.');
 	}
 
 	function goWhere() {
-		$main.html('<p>Go where?</p><p>Please enter your command again, specifying a valid direction you want to go to.</p>')
+		$main.html('<p>Go where?</p><p>Please enter your command again, <br> specifying a valid direction you want to go to.</p>')
 	}
 	function takeWhat() {
-		$main.html('<p>Take what?</p><p>Please enter your command again, specifying a valid object you want to take.</p>');
+		$main.html('<p>Take what?</p><p>Please enter your command again, <br> specifying a valid object you want to take.</p>');
 	}
 
 	function inspectWhat() {
-		$main.html('<p>Inspect what?</p><p>Please enter your command again, specifying a valid object you want to inspect.</p>');
+		$main.html('<p>Inspect what?</p><p>Please enter your command again, <br> specifying a valid object you want to inspect.</p>');
 	}
 
 	function useWhat() {
-		$main.html('<p>Use what?</p><p>Please enter your command again, specifying a valid object you want to use.</p>');
+		$main.html('<p>Use what?</p><p>Please enter your command again, <br> specifying a valid object you want to use.</p>');
 	}
 
 	function checkChoice(choice) {
@@ -117,7 +117,13 @@ $(function(){
 	}
 
 	function inspectChoices1(choice) {
-		if (choice == 'INSPECT COMPUTER' && !dark && !hasKey) {
+		if (choice == 'INSPECT ROOM' && !dark) {
+			inspectRoom();
+		}
+		else if (choice == 'INSPECT ROOM') {
+			tooDark();
+		}
+		else if (choice == 'INSPECT COMPUTER' && !dark && !hasKey) {
 			inspectComputer();
 		}
 		else if (choice == 'INSPECT COMPUTER' && !dark) {
@@ -170,7 +176,7 @@ $(function(){
 	// CHILD GO FUNCTIONS
 
 	function tooDark() {
-		$main.html('<p>It\'s too dark to see where you\'re going.<p>What will you do?</p>');
+		$main.html('<p>It\'s too dark to see where you\'re going.<p>There\'s something that looks like an <strong>IPHONE &copy</strong> at your feet.</p><p>What will you do?</p>');
 	}
 
 	function goNorth() {
@@ -217,6 +223,10 @@ $(function(){
 
 	// CHILD INSPECT FUNCTIONS
 
+	function inspectRoom() {
+		$main.html('<p>You are in a small dungeon with an old <strong>COMPUTER</strong> in the corner <br> and a large, oak <strong>DOOR</strong> to the <strong>NORTH</strong>.</p><p>What will you do?</p>');
+	}
+
 	function inspectComputer() {
 		$main.html('<p>It\'s a broken down old PC. <br> Looking at it gives you a pit in your stomach, but you\'re not sure why. <p>Behind the keyboard, you see a small <strong>KEYCARD</strong> with what looks to be your picture on it. <p>What will you do?</p>');
 		inspectedComputer = true;
@@ -246,7 +256,7 @@ $(function(){
 	// CHILD USE FUNCTIONS
 
 	function usePhone() {
-		$main.html('<p>You turn on the iPhone &copy (Trademark Apple Computers) ("Think different" &copy).</p><p>The room is illuminated.</p>You are in a small dungeon with an old <strong>COMPUTER</strong> in the corner <br> and a large, oak <strong>DOOR</strong> to your <strong>NORTH</strong>.</p><p>What will you do?</p>');
+		$main.html('<p>You turn on the iPhone &copy (Trademark Apple Computers) ("Think different" &copy).</p><p>The room is illuminated.</p>You are in a small dungeon with an old <strong>COMPUTER</strong> in the corner <br> and a large, oak <strong>DOOR</strong> to the <strong>NORTH</strong>.</p><p>What will you do?</p>');
 		$h1.html('A SLIGHTLY LESS DARK ROOM');
 		usedPhone = true;
 		dark = false;
