@@ -192,10 +192,16 @@ $(function(){
 		else if (choice == 'USE PAPER BALL' && hasPaperBall) {
 			usePaperBall();
 		}
+		else if (choice == 'USE WHITEBOARD' && atSouth) {
+			useWhiteboard();
+		}
+		else if (choice == 'USE SIGN' && atSouth) {
+			useSign();
+		}
 		else if (choice == 'USE PAPER BALL' && atNorth && waterCoolerUsed) {
 			usePaperBallError();
 		}
-		else if (choice == 'USE LAPTOP') {
+		else if (choice == 'USE LAPTOP' && atSouth) {
 			useLaptop();
 		}
 		else {
@@ -293,15 +299,15 @@ $(function(){
 			part = 6;
 			$main.html('<p>Suddenly, everything seems clear to you, <br> like you\'ve found the answer you\'ve been looking for.</p>In your mind, a bright door of light opens to the <strong>EAST</strong>...</p><p>What will you do?</p>');
 		}
-		else if (choice == 'EAST' && part == 6) {
+		else if (choice == 'GO EAST' && part == 6) {
 			goEast();
 		}
-		else if (choice !== 'EAST' && part == 6) {
+		else if (choice !== 'GO EAST' && part == 6) {
 			$main.html('<p>There\'s nothing more to do than to go <strong>EAST</strong>...<p>What will you do?</p>');
 		}
 		else if (choice !== 'E' && part == 4) {
 			$main.css('font-family', 'courier new');
-			$main.html('<p>........seriously? <br> Come on, man, just type "E".</p><p>Which option will you choose?</p>');
+			$main.html('<div style="background-color: red; height: 352px; width: 266px; margin: 0 auto; margin-top: 32px; margin-bottom: 34px;"></div><p>........seriously? <br> Come on, man, just type "E".</p><p>Which option will you choose?</p>');
 			divFightEnd();
 		}
 	}
@@ -411,6 +417,13 @@ $(function(){
 	}
 
 	// CHILD USE FUNCTIONS
+	function useWhiteboard() {
+		$main.html('<p>You draw some dirty pictures on the whiteboard and giggle to yourself. <br> Wow. You\'re really mature.</p><p>What will you do?</p>');
+	}
+
+	function useSign() {
+		$main.html('<p>How exactly were you planning on using the sign? <br> Like, really, what were you expecting to happen?</p><p>What will you do?</p>');
+	}
 
 	function useBeanBag() {
 		$main.html('<p>You sit in the bean bag chair and feel something moist. <br> You shudder.</p><p>What will you do?');

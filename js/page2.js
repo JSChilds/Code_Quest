@@ -129,6 +129,12 @@ $(function(){
 		else if (choice == 'TAKE COMPUTER') {
 			takeComputer();
 		}
+		else if (choice == 'TAKE DOOR') {
+			takeDoor();
+		}
+		else if (choice == 'TAKE KEYPAD' && doorInspected) {
+			takeKeypad();
+		}
 		else {
 			takeWhat();
 		}
@@ -156,6 +162,9 @@ $(function(){
 		else if (choice == 'INSPECT SERVERS') {
 			inspectServers();
 		}
+		else if (choice == 'INSPECT DOOR' && doorOpen) {
+			inspectDoorAgain();
+		}
 		else if (choice == 'INSPECT DOOR') {
 			inspectDoor();
 		}
@@ -174,7 +183,7 @@ $(function(){
 		else if (choice == 'INSPECT KEYPAD' && doorControlsOn) {
 			inspectKeypad();
 		}
-		else if (choice == 'INSPECT KEYPAD') {
+		else if (choice == 'INSPECT KEYPAD' && doorInspected) {
 			inspectKeypadError();
 		}
 		else {
@@ -308,7 +317,7 @@ $(function(){
 	}
 
 	function getScrewdriver() {
-		$main.html('<p>You picked up the screwdriver. <br> Praise be to you, O great master of tools. <img style="height: 329px; margin-top: 17px" src="../images/screwdriver.jpg"/><p>What will you do?</p>');
+		$main.html('<p>You picked up the screwdriver.</p><img style="height: 329px; margin-top: 17px; margin-bottom: 17px;" src="../images/screwdriver.jpg"/><p>Praise be to you, O great master of tools.</p> <p>What will you do?</p>');
 		hasScrewdriver = true;
 	}
 
@@ -326,6 +335,14 @@ $(function(){
 
 	function takeSwitch() {
 		$main.html('<p>You try to wrestle the switch off of the wall, but to no avail. <br> What an utter waste of time.</p><p>What will you do?</p>');
+	}
+
+	function takeDoor() {
+		$main.html('It\'s... it\'s a door. You can\'t take a door. Come on.</p><p>What will you do?');
+	}
+
+	function takeKeypad() {
+		$main.html('<p>No dice, it\'s fastened to the wall. <br> Stop trying to steal everything.</p><p>What will you do?</p>');
 	}
 
 	// CHILD INSPECT FUNCTIONS
@@ -360,7 +377,7 @@ $(function(){
 	}
 
 	function inspectServers() {
-		$main.html('<p>There are a ton of servers with wires running out of them. <br> Behind one of the servers, you can see a metal grate that\'s screwed on tight.</p>');
+		$main.html('<p>There are a ton of servers with wires running out of them. <br> Behind one of the servers, you can see a metal grate that\'s screwed on tight.</p><p>What will you do?</p>');
 		serversInspected = true;
 	}
 
@@ -373,8 +390,12 @@ $(function(){
 	}
 
 	function inspectDoor() {
-		$main.html('<p>It\'s a thick, metal door. Next to it is a KEYPAD</p><p>What will you do?</p>');
+		$main.html('<p>It\'s a thick, metal door. Next to it is a <strong>KEYPAD</strong>.</p><p>What will you do?</p>');
 		doorInspected = true;
+	}
+
+	function inspectDoorAgain() {
+		$main.html('<p>The door is open now.</p><p>What will you do?</p>');
 	}
 
 	function inspectKeypad() {
@@ -408,7 +429,7 @@ $(function(){
 	}
 
 	function useDrawer() {
-		$main.html('<p>You opened the drawer. <br> There\'s a small, flimsy-looking <strong>SCREWDRIVER</strong> inside.</p>');
+		$main.html('<p>You opened the drawer. <br> There\'s a small, flimsy-looking <strong>SCREWDRIVER</strong> inside.</p><p>What will you do?</p>');
 		drawerOpen = true;
 	}
 

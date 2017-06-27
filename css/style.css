@@ -1,8 +1,13 @@
 body {
 	text-align: center;
 	background-color: black;
+	background: url("../images/background3.png") no-repeat bottom left fixed; 
+	background-size: cover;
 	color: lawngreen;
 	font-family: "Courier New";
+	font-size: 15px;
+	width: 100%;
+	height: 100%;
 }
 
 h1 {
@@ -16,6 +21,8 @@ h1 {
 
 .instructions {
 	text-align: left;
+	margin-left: 42px;
+	margin-right: 42px;
 }
 
 a {
@@ -39,6 +46,92 @@ input {
 	background-color: black;
 	outline-color: lawngreen;
 }
+
+.console {
+	background-color: black;
+    height: 100%;
+    margin: 0 auto;
+    /* margin-left: 100px; */
+    /* margin-right: 100px; */
+    border: solid 2.5px;
+    border-color: "ghostWhite";
+    border-style: outset;
+    /* min-width: 1000px; */
+    width: 1000px;
+    /* display: block; */
+}
+
+.console2 {
+	background-color: black;
+    height: 575px;
+    margin: 0 auto;
+    /* margin-left: 100px; */
+    /* margin-right: 100px; */
+    border: solid 2.5px;
+    border-color: "ghostWhite";
+    border-style: outset;
+    /* min-width: 1000px; */
+    width: 824px;
+    /* display: block; */
+}
+
+#bar {
+	background-color: navy;
+    height: 25px;
+    width: 99.5%;
+    border-style: outset;
+    display: inline-flex;
+}
+
+#bar p {
+	text-align: left;
+	padding: 0;
+	margin: 0;
+	font-family: MS sans-serif;
+    font-size: 17px;
+    color: snow;
+    font-weight: bold;
+    padding-top: 1px;
+    padding-left: 3px;
+    display: inline-block;
+}
+
+#X {
+	float: right;
+	margin-left: 902px;
+	background-color: darkgrey;
+	width: 100%;
+	border-style: outset;
+}
+
+#X p {
+	color: black;
+    padding-right: 1px;
+    font-size: 13px;
+    font-family: sans-serif;
+}
+
+#X2 {
+	float: right;
+	margin-left: 727px;
+	background-color: darkgrey;
+	width: 100%;
+	border-style: outset;
+}
+
+#X2 p {
+	color: black;
+    padding-right: 1px;
+    font-size: 13px;
+    font-family: sans-serif;
+}
+
+#copyright {
+	margin-top: 251px;
+    font-size: 12px;
+}
+
+
 
 /*.selected {
 	color: grey;
