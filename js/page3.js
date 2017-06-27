@@ -367,7 +367,7 @@ $(function(){
 	}
 
 	function getPaperBall() {
-		$main.html('<p>You pick up the paper ball. (Ugh, it\'s soggy.)</p><img style="height: 295px" src="../images/paperball.jpg"/> <p>You uncrumple it. There seems to be something written on it...</p><p>What will you do?');
+		$main.html('<p>You pick up the paper ball. (Ugh, it\'s soggy.)</p><div class="img-box"> <div id="img-bar"> <p>object.jpg</p> <div id="X3"> <p>X</p></div></div><img src="../images/paperball.jpg"/></div><p>You uncrumple it. There seems to be something written on it...</p><p>What will you do?');
 		hasPaperBall = true;
 	}
 

@@ -317,7 +317,7 @@ $(function(){
 	}
 
 	function getScrewdriver() {
-		$main.html('<p>You picked up the screwdriver.</p><img style="height: 329px; margin-top: 17px; margin-bottom: 17px;" src="../images/screwdriver.jpg"/><p>Praise be to you, O great master of tools.</p> <p>What will you do?</p>');
+		$main.html('<p>You picked up the screwdriver.</p><div class="img-box"> <div id="img-bar"> <p>object.jpg</p> <div id="X3"> <p>X</p></div></div><img src="../images/screwdriver.jpg"/></div><p>Praise be to you, O great master of tools.</p> <p>What will you do?</p>');
 		hasScrewdriver = true;
 	}
 
