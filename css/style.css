@@ -88,17 +88,38 @@ input {
 	padding: 0;
 	margin: 0;
 	font-family: MS sans-serif;
-    font-size: 17px;
+    font-size: 14px;
     color: snow;
     font-weight: bold;
-    padding-top: 1px;
+    padding-top: 4px;
+    padding-left: 3px;
+    display: inline-block;
+}
+
+#bar2 {
+	background-color: navy;
+    height: 25px;
+    width: 99.5%;
+    border-style: outset;
+    display: inline-flex;
+}
+
+#bar2 p {
+	text-align: left;
+	padding: 0;
+	margin: 0;
+	font-family: MS sans-serif;
+    font-size: 13px;
+    color: snow;
+    font-weight: bold;
+    padding-top: 4px;
     padding-left: 3px;
     display: inline-block;
 }
 
 #X {
 	float: right;
-	margin-left: 902px;
+	margin-left: 880px;
 	background-color: darkgrey;
 	width: 100%;
 	border-style: outset;
@@ -113,7 +134,7 @@ input {
 
 #X2 {
 	float: right;
-	margin-left: 727px;
+	margin-left: 733px;
 	background-color: darkgrey;
 	width: 100%;
 	border-style: outset;
@@ -121,7 +142,8 @@ input {
 
 #X2 p {
 	color: black;
-    padding-right: 1px;
+    padding-right: 2px;
+    padding-top: 2px;
     font-size: 13px;
     font-family: sans-serif;
 }
