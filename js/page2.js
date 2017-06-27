@@ -40,12 +40,13 @@ $(function(){
 	}
 
 	function error() {
-		$main.html('<p>Sorry, I don\'t recognise that command.</p><p>Please enter a command with <strong>GO</strong>,<strong> INSPECT</strong>,<strong> TAKE</strong> or<strong> USE</strong>, <br> followed by a specified direction or object.');
+		$main.html('<p>Sorry, I don\'t recognise that command.</p><p>Please enter a command with <strong>GO</strong>,<strong> INSPECT</strong>,<strong> TAKE</strong> or<strong> USE</strong>, <br> followed by a specified direction or object.<p>(Type <strong>INSPECT ROOM</strong> if you need to be reminded of what\'s in the room.)</p>');
 	}
 
 	function goWhere() {
 		$main.html('<p>Go where?</p><p>Please enter your command again, <br> specifying a valid direction you want to go to.</p>')
 	}
+
 	function takeWhat() {
 		$main.html('<p>Take what?</p><p>Please enter your command again, <br> specifying a valid object you want to take.</p>');
 	}
@@ -134,7 +135,10 @@ $(function(){
 	}
 
 	function inspectChoices2(choice) {
-		if (choice == 'INSPECT COMPUTER' && computerPowerOn) {
+		if (choice == 'INSPECT ROOM') {
+			inspectRoom();
+		}
+		else if (choice == 'INSPECT COMPUTER' && computerPowerOn) {
 			inspectComputerAgain();
 		}
 		else if (choice == 'INSPECT COMPUTER') {
@@ -325,6 +329,10 @@ $(function(){
 	}
 
 	// CHILD INSPECT FUNCTIONS
+	function inspectRoom() {
+		$main.html('<p>You\'re in a huge room full of <strong>SERVERS</strong>.</p><p>In the middle of the room is a <strong>DESK</strong> with a slightly old <strong>COMPUTER</strong> on it.</p><p>To the <strong>WEST</strong>, there is a sleek, metallic <strong>DOOR</strong>.<p>What will you do?</p>');
+	}
+
 	function inspectComputer() {
 		$main.html('<p>This computer\'s hardly modern, but it looks functional. <br> The <strong>POWER BUTTON</strong> is off.</p><p>What will you do?</p>');
 		computerInspected = true;

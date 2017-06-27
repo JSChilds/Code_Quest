@@ -40,22 +40,23 @@ $(function(){
   	// DEFAULT FUNCTIONS
 
 	function error() {
-		$main.html('<p>Sorry, I don\'t recognise that command.</p><p>Please enter a command with <strong>GO</strong>,<strong> INSPECT</strong>,<strong> TAKE</strong> or<strong> USE</strong>, followed by a specified direction or object.');
+		$main.html('<p>Sorry, I don\'t recognise that command.</p><p>Please enter a command with <strong>GO</strong>,<strong> INSPECT</strong>,<strong> TAKE</strong> or<strong> USE</strong>, <br> followed by a specified direction or object.<p>(Type <strong>INSPECT ROOM</strong> if you need to be reminded of what\'s in the room.)</p>');
 	}
 
 	function goWhere() {
-		$main.html('<p>Go where?</p><p>Please enter your command again, specifying a valid direction you want to go to.</p>')
+		$main.html('<p>Go where?</p><p>Please enter your command again, <br> specifying a valid direction you want to go to.</p>');
 	}
+
 	function takeWhat() {
-		$main.html('<p>Take what?</p><p>Please enter your command again, specifying a valid object you want to take.</p>');
+		$main.html('<p>Take what?</p><p>Please enter your command again, <br> specifying a valid object you want to take.</p>');
 	}
 
 	function inspectWhat() {
-		$main.html('<p>Inspect what?</p><p>Please enter your command again, specifying a valid object you want to inspect.</p>');
+		$main.html('<p>Inspect what?</p><p>Please enter your command again, <br> specifying a valid object you want to inspect.</p>');
 	}
 
 	function useWhat() {
-		$main.html('<p>Use what?</p><p>Please enter your command again, specifying a valid object you want to use.</p>');
+		$main.html('<p>Use what?</p><p>Please enter your command again, <br> specifying a valid object you want to use.</p>');
 	}
 
 	function checkChoice(choice) {
@@ -101,7 +102,7 @@ $(function(){
 		else if (choice == 'GO SOUTH') {
 			noGoSouth();
 		}
-		else if (choice == 'GO WEST' || 'GO EAST') {
+		else if (choice == 'GO WEST' || choice == 'GO EAST') {
 			noGo();
 		}
 		else {
@@ -140,7 +141,13 @@ $(function(){
 	}
 
 	function inspectChoices3(choice) {
-		if (choice == 'INSPECT WHITEBOARD' && atSouth) {
+		if (choice == 'INSPECT ROOM' && atSouth) {
+			inspectRoomSouth();
+		}
+		else if (choice == 'INSPECT ROOM' && atNorth) {
+			inspectRoomNorth();
+		}
+		else if (choice == 'INSPECT WHITEBOARD' && atSouth) {
 			inspectWhiteboard();
 		}
 		else if (choice == 'INSPECT SIGN' && atSouth) {
@@ -324,6 +331,10 @@ $(function(){
 		window.location.href="page4.html";
 	}
 
+	function noGo() {
+		$main.html('<p>There\'s nothing interesting over there. Honest.</p><p>What will you do?</p>');
+	}
+
 	// CHILD TAKE FUNCTIONS
 	function takeWhiteboard() {
 		$main.html('<p>The whiteboard is on the wall, it\'s not for taking. <br> Bad player. Bad.</p>What will you do?</p>');
@@ -359,6 +370,14 @@ $(function(){
 	}
 
 	// CHILD INSPECT FUNCTIONS
+	function inspectRoomSouth() {
+		$main.html('<p>You\'re in a hip, open-plan office. Everything looks sleek and up-to-date.</p><p>In the corner of the room is a large <strong>WHITEBOARD</strong> and a <strong>SIGN</strong>.<p>In the middle of the room is a table with a sleek <strong>LAPTOP</strong> on it.</p><p>It looks like there is more of the office to the <strong>NORTH</strong>.</p><p>What will you do?</p>');
+	}
+
+	function inspectRoomNorth() {
+		$main.html('<p>In the corner of the room is a <strong>WATER COOLER</strong> and a <strong>BEAN BAG CHAIR</strong>. <br> In the centre is a <strong>FOOSBALL TABLE</strong>. <p>There is more of the room to the <strong>SOUTH</strong>.<p>What will you do?</p>');
+	}
+
 	function inspectWhiteboard() {
 		$main.html('<p>It\'s a whiteboard with lots of diagrams and technical language <br> that you don\'t really understand, but feel like <br> you\'d be good at pretending that you do. <p>"USERNAME: ADMIN1" is written in large letters</p><p>What will you do?</p>');
 	}
