@@ -194,7 +194,7 @@ $(function(){
 	// CHILD TAKE FUNCTIONS
 
 	function getPhone() {
-		$main.html('<p>You pick up the iPhone &copy (Trademark Apple Computers).</p> <img style="width: 400px" src="../images/iphone.jpg"/><p>Now everybody thinks you\'re really cool.</p><p>What will you do?</p>');
+		$main.html('<p>You pick up the iPhone &copy (Trademark Apple Computers).</p> <div class="img-box"> <div id="img-bar"> <p>object.jpg</p> <div id="X3"> <p>X</p></div></div><img src="../images/iphone.jpg"/></div><p>Now everybody thinks you\'re really cool.</p><p>What will you do?</p>');
 		hasPhone = true;
 		// ADD PIC OF PHONE TO INVENTORY
 	}
@@ -204,7 +204,7 @@ $(function(){
 	}
 
 	function getKey() {
-		$main.html('<p>You take the keycard.</p><img src="../images/keycard.jpg"/><p>What will you do?</p>');
+		$main.html('<p>You take the keycard.</p><div class="img-box"> <div id="img-bar"> <p>object.jpg</p> <div id="X3"> <p>X</p></div></div><img src="../images/keycard.jpg"/></div><p>What will you do?</p>');
 		hasKey = true;
 		// ADD PIC OF KEY TO INVENTORY AND SCREEN
 	}
