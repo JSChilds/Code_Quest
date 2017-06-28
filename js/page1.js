@@ -16,6 +16,7 @@ $(function(){
 	var inspectingDoor = false;
 	var doorOpen = false;
 
+	// KEYDOWN EVENT LISTENER
 	$input.keydown(getInput);
 
 	function getInput(event) {
@@ -28,9 +29,6 @@ $(function(){
 		checkChoice(choice);
 		}
 	}
-
-
-  	// FUNCTIONS
 
   	// DEFAULT FUNCTIONS
 
@@ -183,7 +181,6 @@ $(function(){
 	}
 
 	// CHILD GO FUNCTIONS
-
 	function tooDark() {
 		$main.html('<p>It\'s too dark to see where you\'re going.<p>There\'s something that looks like an <strong>IPHONE &copy</strong> at your feet.</p><p>What will you do?</p>');
 	}
@@ -201,11 +198,9 @@ $(function(){
 	}
 
 	// CHILD TAKE FUNCTIONS
-
 	function getPhone() {
 		$main.html('<p>You pick up the iPhone &copy (Trademark Apple Computers).</p> <div class="img-box"> <div id="img-bar"> <p>object.jpg</p> <div id="X3"> <p>X</p></div></div><img src="../images/iphone.jpg"/></div><p>Now everybody thinks you\'re really cool.</p><p>What will you do?</p>');
 		hasPhone = true;
-		// ADD PIC OF PHONE TO INVENTORY
 	}
 
 	function errorHasPhone() {
@@ -231,7 +226,6 @@ $(function(){
 	}
 
 	// CHILD INSPECT FUNCTIONS
-
 	function inspectRoom() {
 		$main.html('<p>You are in a small dungeon with an old <strong>COMPUTER</strong> in the corner <br> and a large, oak <strong>DOOR</strong> to the <strong>NORTH</strong>.</p><p>What will you do?</p>');
 	}
@@ -263,7 +257,6 @@ $(function(){
 	}
 
 	// CHILD USE FUNCTIONS
-
 	function usePhone() {
 		$main.html('<p>You turn on the iPhone &copy (Trademark Apple Computers) ("Think different" &copy).</p><p>The room is illuminated.</p>You are in a small dungeon with an old <strong>COMPUTER</strong> in the corner <br> and a large, oak <strong>DOOR</strong> to the <strong>NORTH</strong>.</p><p>What will you do?</p>');
 		$h1.html('A SLIGHTLY LESS DARK ROOM');
@@ -303,18 +296,6 @@ $(function(){
 	function useComputer() {
 		$main.html('<p>It\'s busted and you can\'t turn it on. <br> I\'m sure you\'ve heard that before.</p><p>What will you do?</p>');
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

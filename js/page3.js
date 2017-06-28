@@ -21,8 +21,7 @@ $(function(){
 	var choiceC = false;
 	var choiceD = false;
 
-
-
+	// KEYDOWN EVENT LISTENER
 	$input.keydown(getInput);
 
 	function getInput(event) {
@@ -213,6 +212,7 @@ $(function(){
 		}
 	}
 
+	// LAPTOP FUNCTIONS
 	function laptopChoices(choice) {
 		var funk = new Audio('../audio/error.mp3');
 		var welcome = new Audio('../audio/welcome.mp3');
@@ -330,6 +330,12 @@ $(function(){
 			$battle.pause();
 			fanfare.play();
 		}
+	}
+
+	function divFight() {
+		$main.html('<p>...suddenly, a stray div attacks!</p> <div class="red-div"></div> <p>Hurry, get rid of it!</p><p>(Type "NEXT" to continue.)');
+		step = 0;
+		part = 1;
 	}
 
 	// CHILD GO FUNCTIONS
@@ -473,12 +479,6 @@ $(function(){
 	function useLaptop() {
 		$main.html('<p>The laptop reads:</p><p>ENTER USERNAME <br> OR "QUIT" TO EXIT.</p><p>What will you type?</p>');
 		step = 1;
-	}
-
-	function divFight() {
-		$main.html('<p>...suddenly, a stray div attacks!</p> <div class="red-div"></div> <p>Hurry, get rid of it!</p><p>(Type "NEXT" to continue.)');
-		step = 0;
-		part = 1;
 	}
 
 

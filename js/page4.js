@@ -9,6 +9,9 @@ $(function(){
 	var $body = $('body');
 	var $button = $('button');
 
+
+
+	// KEYDOWN EVENT LISTENER
 	$input.keydown(getInput);
 
 	function getInput(event) {
@@ -22,6 +25,8 @@ $(function(){
 		}
 	}
 
+	//DEFAULT FUNCTIONS
+	
 	function checkChoice(choice) {
 		choice = choice.toUpperCase();
 		if (choice == 'TARGET DIV') {

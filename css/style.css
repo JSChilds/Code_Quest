@@ -8,7 +8,20 @@ body {
 	font-size: 15px;
 	width: 100%;
 	height: 100%;
-	margin-top: 44px;
+	margin-top: 30px;
+}
+
+.body-1 {
+	text-align: center;
+	background-color: black;
+	background: url("../images/background3.png") no-repeat bottom left fixed; 
+	background-size: cover;
+	color: lawngreen;
+	font-family: "Courier New";
+	font-size: 15px;
+	width: 100%;
+	height: 100%;
+	margin-top: 75px;
 }
 
 .body-2 {
@@ -21,7 +34,7 @@ body {
 	font-size: 15px;
 	width: 100%;
 	height: 100%;
-	margin-top: 44px;
+	margin-top: 75px;
 }
 
 .body-3 {
@@ -34,7 +47,7 @@ body {
 	font-size: 15px;
 	width: 100%;
 	height: 100%;
-	margin-top: 44px;
+	margin-top: 75px;
 }
 
 .body-4 {
@@ -47,7 +60,7 @@ body {
 	font-size: 15px;
 	width: 100%;
 	height: 100%;
-	margin-top: 44px;
+	margin-top: 75px;
 }
 
 #icon {
@@ -58,6 +71,7 @@ body {
     background-color: black;
     border: solid snow 0.1px;
     border-style: outset;
+    cursor: default;
 }
 
 #icon h1 {
@@ -98,7 +112,7 @@ a {
 
 button {
 	background-color: black;
-	margin-bottom: 40px; 
+	margin-bottom: 25px; 
 }
 
 input {
@@ -116,19 +130,13 @@ input {
 	background-color: black;
     height: 100%;
     margin: 0 auto;
-    /* margin-left: 100px; */
-    /* margin-right: 100px; */
     border: solid 2.5px;
     border-color: "ghostWhite";
     border-style: outset;
-    /* min-width: 1000px; */
     width: 1000px;
-    /* display: block; */
 }
 
-.console2 {/*
-	margin-top: 47px;
-	margin-left: 100px;*/
+.console2 {
 	background-color: black;
     height: 575px;
     margin: 0 auto;
@@ -186,6 +194,7 @@ input {
 	background-color: darkgrey;
 	width: 100%;
 	border-style: outset;
+	cursor: default;
 }
 
 #X p {
