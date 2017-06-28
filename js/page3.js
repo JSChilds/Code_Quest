@@ -293,9 +293,6 @@ $(function(){
 				$main.html('<p>W-Why did you think that would work...</p><div class="red-div"></div><p>You\'re all out of options! You\'re doomed! Doomed! <br> ..........oh, wait... you were targeting the wrong div...</p><p>.........</p><p>E) Select correct div.</p>Which option will you choose?</p>');	
 			}
 		}
-		else {
-			divFightChoices();
-		}
 	}
 
 	function divFightEnd(choice) {
@@ -316,11 +313,11 @@ $(function(){
 		else if (choice !== 'GO EAST' && part == 6) {
 			$main.html('<p>There\'s nothing more to do than to go <strong>EAST</strong>...<p>What will you do?</p>');
 		}
-		else if (choice !== 'E' && part == 4) {
-			$main.css('font-family', 'courier new');
-			$main.html('<div class="red-div"></div><p>........seriously? <br> Come on, man, just type "E".</p><p>Which option will you choose?</p>');
-			divFightEnd();
-		}
+		// else if (choice !== 'E' && part == 4) {
+		// 	$main.css('font-family', 'courier new');
+		// 	$main.html('<div class="red-div"></div><p>........seriously? <br> Come on, man, just type "E".</p><p>Which option will you choose?</p>');
+		// 	divFightEnd();
+		// }
 	}
 
 	function battleMusic() {

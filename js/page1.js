@@ -153,17 +153,26 @@ $(function(){
 		else if (choice == 'USE IPHONE' && hasPhone) {
 			usePhone();
 		}
+		else if (choice == 'USE IPHONE') {
+			usePhoneError();
+		}
 		else if (choice == 'USE DOOR' && doorOpen) {
 			inspectDoor2();
 		}
 		else if (choice == 'USE DOOR' && !dark) {
 			useDoor();
 		}
+		else if (choice == 'USE KEYCARD' && doorOpen) {
+			useKeyAgain();
+		}
 		else if (choice == 'USE KEYCARD' && hasKey && inspectingDoor) {
 			openDoor();
 		}
 		else if (choice == 'USE KEYCARD' && hasKey) {
 			useKeyError();
+		}
+		else if (choice == 'USE KEYCARD' && inspectedComputer) {
+			useKeyEarly();
 		}
 		else if (choice == 'USE COMPUTER' && !dark) {
 			useComputer();
@@ -205,7 +214,7 @@ $(function(){
 
 	function getKey() {
 		$main.html('<p>You take the keycard.</p><div class="img-box"> <div id="img-bar"> <p>object.jpg</p> <div id="X3"> <p>X</p></div></div><img src="../images/keycard.jpg"/></div><p>What will you do?</p>');
-		hasKey = true;
+		hasKey = true;aa
 		// ADD PIC OF KEY TO INVENTORY AND SCREEN
 	}
 
@@ -228,7 +237,7 @@ $(function(){
 	}
 
 	function inspectComputer() {
-		$main.html('<p>It\'s a broken down old PC. <br> Looking at it gives you a pit in your stomach, but you\'re not sure why. <p>Behind the keyboard, you see a small <strong>KEYCARD</strong> with what looks to be your picture on it. <p>What will you do?</p>');
+		$main.html('<p>It\'s a broken down old PC. <br> Looking at it gives you a pit in your stomach, but you\'re not sure why. <p>Behind the keyboard, you see a small <strong>KEYCARD</strong> <br> with what looks to be your picture on it. <p>What will you do?</p>');
 		inspectedComputer = true;
 	}
 
@@ -266,19 +275,29 @@ $(function(){
 		$main.html('<p>You play Angry Birds for 45 minutes straight. <br> You begin to seriously question what you\'re doing with your life. <p>What will you do?</p>');
 	}
 
+	function usePhoneError() {
+		$main.html('<p>You should pick it up first, don\'t you think?</p><p>What will you do?</p>');
+	}
+
 	function useDoor() {
 		$main.html('<p>The door\'s locked. It won\'t budge.</p><p>What will you do?</p>');
+	}
+
+	function useKeyEarly() {
+		$main.html('<p>You can\'t use the keycard if you aren\'t holding it. <br> I would think that was obvious.</p><p>What will you do?</p>');
 	}
 
 	function useKeyError() {
 		$main.html('<p>Use the keycard on what?</p> <br> (Hint: Go to the door first, dummy)</p><p>What will you do?</p>');
 	}
 
+	function useKeyAgain() {
+		$main.html('<p>There\'s nothing more to do with the keycard.</p><p>What will you do?</p>');
+	}
+
 	function openDoor() {
 		$main.html('<p>You swipe the keycard and the door swings open. <br> The path to the <strong>NORTH</strong> is now clear. <br> The iPhone runs out of battery and darkness surrounds you. <br> You have a bad feeling about this.</p>What will you do?</p>');
 		doorOpen = true;
-		// REMOVE PIC OF KEY FROM INVENTORY
-		// POSSIBLY SET hasKEY to FALSE IF NEEDED?
 	}
 
 	function useComputer() {

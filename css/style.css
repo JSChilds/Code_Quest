@@ -50,8 +50,6 @@ body {
 	margin-top: 44px;
 }
 
-
-
 #icon {
 	margin: 0 auto;
 	margin-top: 293px;
@@ -59,6 +57,7 @@ body {
     width: 80px;
     background-color: black;
     border: solid snow 0.1px;
+    border-style: outset;
 }
 
 #icon h1 {

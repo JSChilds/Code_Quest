@@ -114,7 +114,7 @@ $(function(){
 		else if (choice == 'TAKE DESK') {
 			takeDesk();
 		}
-		else if (choice == 'TAKE DRAWER') {
+		else if (choice == 'TAKE DRAWER' && deskInspected) {
 			takeDrawer();
 		}
 		else if (choice == 'TAKE SERVERS') {
@@ -210,6 +210,9 @@ $(function(){
 		else if (choice == 'USE SCREWDRIVER' && hasScrewdriver) {
 			useScrewdriver();
 		}
+		else if (choice == 'USE SCREWDRIVER' && drawerOpen) {
+			useScrewdriverEarly();
+		}
 		else if (choice == 'USE POWER BUTTON' && computerPowerOn) {
 			usePowerButtonAgain();
 		}
@@ -255,6 +258,7 @@ $(function(){
 	}
 
 	function computerChoices(choice) {
+		var error = new Audio('../audio/error.mp3');
 		if (choice == 'CD DOOR_CONTROL' && step == 1) {
 			step = 2;
 			$main.html('<p>CHANGED DIRECTORY TO DOOR_CONTROL. <br> PLEASE LIST ALL FILES IN WORKING DIRECTORY.</p>What will you type?</p>');
@@ -273,15 +277,19 @@ $(function(){
 			$main.html('<p>DOOR CONTROLS INITIATED. YOU ARE SMART AND BEAUTIFUL <br> AND ALL THE OTHER KIDS ARE JEALOUS OF YOU. <br> GOODBYE XXX ;)</p><p>The eerily supportive computer switches off. <br> You better go check the door.</p><p>What will you do?</p>');
 		}
 		else if (choice !== 'CD DOOR_CONTROL' && step == 1) {
+			error.play();
 			$main.html('<p>INCORRECT COMMAND. PLEASE CHANGE TO DOOR_CONTROL DIRECTORY.</p><p>What will you type?</p>');
 		}
 		else if (choice !== 'LS' && step == 2) {
+			error.play();
 			$main.html('<p>INCORRECT COMMAND. PLEASE LIST ALL FILES IN WORKING DIRECTORY.</p><p>What will you type?</p>');
 		}
 		else if (choice !== 'TOUCH DOOR_CONTROL.EXE' && step == 3) {
+			error.play();
 			$main.html('<p>INCORRECT COMMAND. PLEASE CREATE A FILE CALLED DOOR_CONTROL.EXE.</p><p>What will you type?</p>');
 		}
 		else if (choice !== 'OPEN DOOR_CONTROL.EXE' && step == 4) {
+			error.play();
 			$main.html('<p>INCORRECT COMMAND. PLEASE OPEN DOOR_CONTROL.EXE. <br> [P.S. YOU ARE REALLY CLOSE TO OPENING THE DOOR, I PROMISE.]</p><p>What will you type?</p>');
 		}
 	}
@@ -448,6 +456,10 @@ $(function(){
 
 	function useScrewdriverAgain() {
 		$main.html('<p>You don\'t have the screwdriver anymore, dingus. <br> Please try to pay attention.</p>What will you do?</p>');
+	}
+
+	function useScrewdriverEarly() {
+		$main.html('<p>How do you plan on using it? <br> With your mind? Take it, THEN use it!</p><p>What will you do?');
 	}
 
 	function usePowerButtonError() {
