@@ -73,8 +73,15 @@ input {
     border-style: outset;
     /* min-width: 1000px; */
     width: 824px;
-    /* display: block; */
 }
+
+/*.console2 p {
+	 animation: type 4s steps(60, end)
+}
+
+@keyframes type{ 
+  from { width: 0; } 
+} */
 
 #bar {
 	background-color: navy;

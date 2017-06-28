@@ -7,6 +7,7 @@ $(function(){
 	var $main = $('main');
 	var $h1 = $('h1');
 	var $redDiv = $('.red-div');
+	var $audio = $('audio');
 
 	// ROOM-SPECIFIC VARIABLES
 	var hasPaperBall = false;
@@ -64,9 +65,11 @@ $(function(){
 		choice = choice.toUpperCase();
 		if (part >= 4) {
 			divFightEnd(choice);
+			battleMusic();
 		}
 		else if (part > 0) {
 			divFightChoices(choice);
+			battleMusic();
 		}
 		else if (step > 0) {
 			laptopChoices(choice);
@@ -211,11 +214,14 @@ $(function(){
 	}
 
 	function laptopChoices(choice) {
+		var funk = new Audio('../audio/error.mp3');
+		var welcome = new Audio('../audio/welcome.mp3');
 		if (choice == 'ADMIN1' && step == 1) {
 			$main.html('<p>The laptop reads:</p> <p> ADMIN1, ENTER PASSWORD OR "QUIT" TO EXIT.</p><p>What will you type?');
 			step = 2;
 		}
 		else if (choice == 'M0RPH3U5' && step == 2) {
+			welcome.play();
 			$main.html('<p>The laptop reads:</p> <p>WELCOME, ADMIN1</p><p>A page loads, it looks like a webpage with the console open...</p> <p>(Type "NEXT" to continue.)</p>');
 			step = 3;
 		}
@@ -227,35 +233,37 @@ $(function(){
 			step = 0;
 		}
 		else if (choice !== 'ADMIN 1' && step == 1) {
+			funk.play();
 			$main.html('<p>The laptop reads:</p><p>UNIDENTIFIED USERNAME. <br> ENTER VALID USERNAME OR "QUIT" TO EXIT.</p><p>What will you type?');
 		}
 		else if (choice !== 'M0RPH3U5' && step == 2) {
+			funk.play();
 			$main.html('<p>The laptop reads:</p><p>INCORRECT PASSWORD. <br> ENTER CORRECT PASSWORD OR "QUIT" TO EXIT.</p><p>What will you type?</p>');
 		}
 	}
 
 	function divFightChoices(choice) {
 		if (choice == 'NEXT' && part == 1) {
-			$main.html('<p>The div is waiting patiently.</p><div class="red-div"></div><p class="options">A) Use margin to move it out of the way!</p><p class="options">B) Set the display to hide!</p><p class="options">C) Give it a width and height of 0!</p><p class="options">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
+			$main.html('<p>The div is waiting patiently.</p><div class="red-div"></div><p class="options">A) Use margin to move it out of the way!</p><p class="options">B) Set the display to none!</p><p class="options">C) Give it a width and height of 0!</p><p class="options">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
 			part = 2;
 		}
 		else if (choice == 'A' && part == 2) {
-			$main.html('<p>It won\'t move!</p><div class="red-div"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to hide!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
+			$main.html('<p>It won\'t move!</p><div class="red-div"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to none!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
 			choiceA = true;
 			divFightCheck(choice);
 		}
 		else if (choice == 'B' && part == 2) {
-			$main.html('<p>It\'s still there, taunting you!</p><div class="red-div"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to hide!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
+			$main.html('<p>It\'s still there, taunting you!</p><div class="red-div"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to none!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
 			choiceB = true;
 			divFightCheck(choice);
 		}
 		else if (choice == 'C' && part == 2) {
-			$main.html('<p>The height and width don\'t change at all!</p><div class="red-div"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to hide!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
+			$main.html('<p>The height and width don\'t change at all!</p><div class="red-div"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to none!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
 			choiceC = true;
 			divFightCheck(choice);
 		}
 		else if (choice == 'D' && part == 2) {
-			$main.html('<p>W-why did you think that would work...</p><div class="red-div"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to hide!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
+			$main.html('<p>W-why did you think that would work...</p><div class="red-div"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to none!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
 			$main.css('font-family', 'Comic Sans MS');
 			choiceD = true;
 			divFightCheck(choice);
@@ -294,7 +302,7 @@ $(function(){
 		if (choice == 'E') {
 			part = 5;
 			$redDiv.removeClass('hidden-div');
-			$redDiv.fadeOut(900);
+			$redDiv.fadeOut(1200);
 			$main.css('font-family', 'courier new');
 			$main.html('<h2>YOU WIN!</h2><p>The div disappears!</p><p>HTML level up! CSS level up!</p><p>You learnt new skill: "BASIC READING COMPREHENSION"!</p><p>(Type "NEXT" to continue.)');
 		}
@@ -312,6 +320,18 @@ $(function(){
 			$main.css('font-family', 'courier new');
 			$main.html('<div class="red-div"></div><p>........seriously? <br> Come on, man, just type "E".</p><p>Which option will you choose?</p>');
 			divFightEnd();
+		}
+	}
+
+	function battleMusic() {
+		var $battle =  document.getElementById('battle');
+		var fanfare = new Audio('../audio/Fanfare.mp3');
+		if (part == 2 && !choiceA && !choiceB && !choiceC && !choiceD) {
+			$battle.play();
+		}
+		else if (part == 5) {
+			$battle.pause();
+			fanfare.play();
 		}
 	}
 

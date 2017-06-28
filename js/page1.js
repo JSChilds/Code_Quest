@@ -275,7 +275,7 @@ $(function(){
 	}
 
 	function openDoor() {
-		$main.html('<p>You swipe the keycard and the door swings open. <br> The path to the <strong>NORTH</strong> is now clear. <br> You have a bad feeling about this.</p>What will you do?</p>');
+		$main.html('<p>You swipe the keycard and the door swings open. <br> The path to the <strong>NORTH</strong> is now clear. <br> The iPhone runs out of battery and darkness surrounds you. <br> You have a bad feeling about this.</p>What will you do?</p>');
 		doorOpen = true;
 		// REMOVE PIC OF KEY FROM INVENTORY
 		// POSSIBLY SET hasKEY to FALSE IF NEEDED?

@@ -213,7 +213,7 @@ $(function(){
 		else if (choice == 'USE POWER BUTTON' && computerPowerOn) {
 			usePowerButtonAgain();
 		}
-		else if (choice == 'USE POWER BUTTON' && powerOn) {
+		else if (choice == 'USE POWER BUTTON' && powerOn && computerInspected) {
 			usePowerButton();
 		}
 		else if (choice == 'USE POWER BUTTON' && computerInspected) {
@@ -455,6 +455,8 @@ $(function(){
 	}
 
 	function usePowerButton() {
+		var startup = new Audio('../audio/Startup.mp3');
+		startup.play();
 		$main.html('<p>You turn on the power and hear that familiar Windows XP start-up sound. <br> Ah, memories.</p><p>What will you do?</p>');
 		computerPowerOn = true;
 	}
