@@ -415,7 +415,7 @@ $(function(){
 	}
 
 	function inspectSign() {
-		$main.html('<p>On the wall in big, white letters it says:</p> "CODEQUEST - We make your dreams come true"</p><p>You can\'t put your finger on why, <br> but this seems really self-indulgent.</p><p>What will you do?</p>');
+		$main.html('<p>On the wall in big, white letters it says:</p> "CODE_QUEST - We make your dreams come true"</p><p>You can\'t put your finger on why, <br> but this seems really self-indulgent.</p><p>What will you do?</p>');
 	}
 
 	function inspectLaptop() {
