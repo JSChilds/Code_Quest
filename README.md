@@ -1,5 +1,5 @@
 # CODE_QUEST
-A text-based adventure game where players must traverse a dungeon, collecting objects and solving computer-based puzzles. Made using HTML, CSS and JavaScript.
+A text-based adventure game where players must traverse a dungeon, collecting objects and solving computer-based puzzles.
 
 ## How to Launch the Game
 
@@ -11,6 +11,8 @@ A text-based adventure game where players must traverse a dungeon, collecting ob
 
 ![Screenshot of instructions page](https://github.com/JSChilds/Text-based-Adventure-Game/blob/master/screenshots/screenshot_instructions.png)
 
+[OR click here]()
+
 ## How to Play
 
 You will be given a description of the room you're in and objects you can interact with. Type commands into the input field to interact with the game.
@@ -20,3 +22,8 @@ There are four set commands: **GO**, **TAKE**, **INSPECT** and **USE**. Use **GO
 If you ever need to check where you are and what objects you can interact with, type **INSPECT ROOM**.
 
 At times, you will be prompted to type other commands to interact with puzzles. In these cases, follow the instructions provided.
+
+
+## Technologies
+
+The game is structured using  an HTML template, styled with CSS and made dynamic by using JavaScript (including jQuery) for DOM manipulation.
