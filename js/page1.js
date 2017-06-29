@@ -73,9 +73,12 @@ $(function(){
 	// MASTER CHOICE FUNCTIONS
 
 	function goChoices1(choice) {
-		if (dark) {
-			tooDark();
+		if (dark && hasPhone) {
+			tooDark2();
 		} 
+		else if (dark) {
+			tooDark();
+		}
 		else if (choice == 'GO NORTH' && doorOpen) {
 			goNorth();
 		}
@@ -115,11 +118,14 @@ $(function(){
 	}
 
 	function inspectChoices1(choice) {
-		if (choice == 'INSPECT ROOM' && !dark) {
-			inspectRoom();
+		if (choice == 'INSPECT ROOM' && hasPhone && dark) {
+			tooDark2();
+		}
+		else if (choice == 'INSPECT ROOM' && dark) {
+			tooDark();
 		}
 		else if (choice == 'INSPECT ROOM') {
-			tooDark();
+			inspectRoom();
 		}
 		else if (choice == 'INSPECT COMPUTER' && !dark && !hasKey) {
 			inspectComputer();
@@ -182,7 +188,11 @@ $(function(){
 
 	// CHILD GO FUNCTIONS
 	function tooDark() {
-		$main.html('<p>It\'s too dark to see where you\'re going.<p>There\'s something that looks like an <strong>IPHONE &copy</strong> at your feet.</p><p>What will you do?</p>');
+		$main.html('<p>It\'s too dark to see where you\'re going. <br> There\'s something that looks like an <strong>IPHONE &copy</strong> at your feet.</p><p>What will you do?</p>');
+	}
+
+	function tooDark2() {
+		$main.html('<p>It\'s still too dark to see where you\'re going. <br> You\'ll have to find a light source, first.</p><p>What will you do?</p>');
 	}
 
 	function goNorth() {
@@ -209,8 +219,7 @@ $(function(){
 
 	function getKey() {
 		$main.html('<p>You take the keycard.</p><div class="img-box"> <div id="img-bar"> <p>object.jpg</p> <div id="X3"> <p>X</p></div></div><img src="../images/keycard.jpg"/></div><p>What will you do?</p>');
-		hasKey = true;aa
-		// ADD PIC OF KEY TO INVENTORY AND SCREEN
+		hasKey = true;
 	}
 
 	function errorHasKey() {
@@ -218,7 +227,7 @@ $(function(){
 	}
 
 	function takeComputer() {
-		$main.html('<p>It\'s really heavy and has no discernible use, so there\'s no point in taking it. <br> Hey, that sounds like you!</p><p>What will you do?</p>');
+		$main.html('<p>It\'s really heavy and has no discernible use, <br> so there\'s no point in taking it. <br> Hey, that sounds like you!</p><p>What will you do?</p>');
 	}
 
 	function takeDoor() {
@@ -296,11 +305,6 @@ $(function(){
 	function useComputer() {
 		$main.html('<p>It\'s busted and you can\'t turn it on. <br> I\'m sure you\'ve heard that before.</p><p>What will you do?</p>');
 	}
-
-
-
-
-
 
 
 

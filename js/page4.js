@@ -10,7 +10,6 @@ $(function(){
 	var $button = $('button');
 
 
-
 	// KEYDOWN EVENT LISTENER
 	$input.keydown(getInput);
 

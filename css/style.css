@@ -64,8 +64,8 @@ body {
 }
 
 #icon {
-	margin: 0 auto;
-	margin-top: 293px;
+	margin-top: 320px;
+	margin-left: 4px;
     height: 88px;
     width: 80px;
     background-color: black;
@@ -190,7 +190,7 @@ input {
 
 #X {
 	float: right;
-	margin-left: 880px;
+	margin-left: 875px;
 	background-color: darkgrey;
 	width: 100%;
 	border-style: outset;
@@ -285,18 +285,3 @@ img {
 .hidden-div {
 	display: none;
 }
-
-/*.options {
-	font-size: 10px;
-}*/
-
-
-/*.selected {
-	color: grey;
-	text-decoration: line-through;
-	display: show;
-}
-
-.hidden {
-	display: none;
-}*/

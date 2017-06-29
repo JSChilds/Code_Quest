@@ -416,7 +416,7 @@ $(function(){
 		$main.html('<p>The keypad reads "LOCKED".</p><p>What will you do?</p>');
 	}
 
-	//CHILD USE FUNCTIONS
+	// CHILD USE FUNCTIONS
 	function useDoor() {
 		$main.html('<p>There\'s nothing to use. It\'s just a door. Duh.</p><p>What will you do?</p>');
 	}
@@ -500,4 +500,6 @@ $(function(){
 	function useKeypadAgain() {
 		$main.html('<p>The keypad doesn\'t seem to be responding anymore. <br> Better get moving while you can.</p><p>What will you do?</p>');
 	}
+
+	
 });

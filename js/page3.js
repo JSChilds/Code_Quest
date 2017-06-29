@@ -8,6 +8,7 @@ $(function(){
 	var $h1 = $('h1');
 	var $redDiv = $('.red-div');
 	var $audio = $('audio');
+	var $body = $('body');
 
 	// ROOM-SPECIFIC VARIABLES
 	var hasPaperBall = false;
@@ -264,7 +265,7 @@ $(function(){
 		}
 		else if (choice == 'D' && part == 2) {
 			$main.html('<p>W-why did you think that would work...</p><div class="red-div"></div><p id="A">A) Use margin to move it out of the way!</p><p id="B">B) Set the display to none!</p><p id="C">C) Give it a width and height of 0!</p><p id="D">D) Set the font to Comic Sans!</p><p>Which option will you choose?</p>');	
-			$main.css('font-family', 'Comic Sans MS');
+			$body.css('font-family', 'Comic Sans MS');
 			choiceD = true;
 			divFightCheck(choice);
 		}
@@ -273,22 +274,19 @@ $(function(){
 	function divFightCheck(choice) {
 		if (choiceA && choiceB && choiceC && choiceD) {
 			if (choice == 'A') {
-				$main.css('font-family', 'courier new')
 				part = 4;
 				$main.html('<p>It won\'t move!</p><div class="red-div"></div><p>You\'re all out of options! You\'re doomed! Doomed! <br> ..........oh, wait... you were targeting the wrong div...</p><p>.........</p><p>E) Select correct div.</p>Which option will you choose?</p>');	
 			}
 			else if (choice == 'B') {
-				$main.css('font-family', 'courier new')
 				part = 4;
 				$main.html('<p>It\'s still there, taunting you!</p><div class="red-div"></div><p>You\'re all out of options! You\'re doomed! Doomed! <br> ..........oh, wait... you were targeting the wrong div...</p><p>.........</p><p>E) Select correct div.</p>Which option will you choose?</p>');	
 			}
 			else if (choice == 'C') {
-				$main.css('font-family', 'courier new')
 				part = 4;
 				$main.html('<p>The height and width don\'t change at all!</p><div class="red-div"></div><p>You\'re all out of options! You\'re doomed! Doomed! <br> ..........oh, wait... you were targeting the wrong div...</p><p>.........</p><p>E) Select correct div.</p>Which option will you choose?</p>');	
 			}
 			else if (choice == 'D') {
-				$main.css('font-family', 'Comic Sans MS');
+				$body.css('font-family', 'Comic Sans MS');
 				part = 4;
 				$main.html('<p>W-Why did you think that would work...</p><div class="red-div"></div><p>You\'re all out of options! You\'re doomed! Doomed! <br> ..........oh, wait... you were targeting the wrong div...</p><p>.........</p><p>E) Select correct div.</p>Which option will you choose?</p>');	
 			}
@@ -300,7 +298,7 @@ $(function(){
 			part = 5;
 			$redDiv.removeClass('hidden-div');
 			$redDiv.fadeOut(1200);
-			$main.css('font-family', 'courier new');
+			$body.css('font-family', 'courier new');
 			$main.html('<h2>YOU WIN!</h2><p>The div disappears!</p><p>HTML level up! CSS level up!</p><p>You learnt new skill: "BASIC READING COMPREHENSION"!</p><p>(Type "NEXT" to continue.)');
 		}
 		else if (choice == 'NEXT' && part == 5) {
@@ -313,11 +311,6 @@ $(function(){
 		else if (choice !== 'GO EAST' && part == 6) {
 			$main.html('<p>There\'s nothing more to do than to go <strong>EAST</strong>...<p>What will you do?</p>');
 		}
-		// else if (choice !== 'E' && part == 4) {
-		// 	$main.css('font-family', 'courier new');
-		// 	$main.html('<div class="red-div"></div><p>........seriously? <br> Come on, man, just type "E".</p><p>Which option will you choose?</p>');
-		// 	divFightEnd();
-		// }
 	}
 
 	function battleMusic() {
