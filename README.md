@@ -9,7 +9,7 @@ A text-based adventure game where players must traverse a dungeon, collecting ob
 
 3. Click on the Code_Quest.exe icon to begin and follow the instructions provided.
 
-![Screenshot of instructions page](https://github.com/JSChilds/Text-based-Adventure-Game/blob/master/screenshots/screenshot_instructions.png)
+![Screenshot of instructions page](https://github.com/JSChilds/Text-based-Adventure-Game/blob/master/screenshot_instructions.png)
 
 [OR click here](https://jschilds.github.io/Code_Quest/)
 
