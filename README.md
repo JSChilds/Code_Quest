@@ -13,13 +13,13 @@ A text-based adventure game where players must traverse a dungeon, collecting ob
 
 ...and follow the instructions provided.
 
-![Screenshot of instructions page](../screenshots/screenshot_instructions.png)
+![Screenshot of instructions page](https://github.com/JSChilds/Text-based-Adventure-Game/blob/master/screenshots/screenshot_instructions.png)
 
 ## How to Play
 
 You will be given a description of the room you're in and objects you can interact with. Type commands into the input field to interact with the game.
 
-![Screenshot of first page, with input field highlighted](../screenshots/screenshot_input.png)
+![Screenshot of first page, with input field highlighted](https://github.com/JSChilds/Text-based-Adventure-Game/blob/master/screenshots/screenshot_input.png)
 
 There are four set commands: **GO**, **TAKE**, **INSPECT** and **USE**. Use **GO**, followed by **NORTH**, **SOUTH**, **EAST** or **WEST**, and the other commands followed by a specified object to interact with.
 
