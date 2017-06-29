@@ -7,19 +7,13 @@ A text-based adventure game where players must traverse a dungeon, collecting ob
 
 2. Run `open index.html` in the terminal to launch the game.
 
-3. Click on the Code_Quest.exe icon to begin...
-
-![Screenshot of index page, with starting icon highlighted](https://github.com/JSChilds/Text-based-Adventure-Game/blob/master/screenshots/screenshot_icon.png)
-
-...and follow the instructions provided.
+3. Click on the Code_Quest.exe icon to begin and follow the instructions provided.
 
 ![Screenshot of instructions page](https://github.com/JSChilds/Text-based-Adventure-Game/blob/master/screenshots/screenshot_instructions.png)
 
 ## How to Play
 
 You will be given a description of the room you're in and objects you can interact with. Type commands into the input field to interact with the game.
-
-![Screenshot of first page, with input field highlighted](https://github.com/JSChilds/Text-based-Adventure-Game/blob/master/screenshots/screenshot_input.png)
 
 There are four set commands: **GO**, **TAKE**, **INSPECT** and **USE**. Use **GO**, followed by **NORTH**, **SOUTH**, **EAST** or **WEST**, and the other commands followed by a specified object to interact with.
 
