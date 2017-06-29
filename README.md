@@ -11,7 +11,7 @@ A text-based adventure game where players must traverse a dungeon, collecting ob
 
 ![Screenshot of instructions page](https://github.com/JSChilds/Text-based-Adventure-Game/blob/master/screenshots/screenshot_instructions.png)
 
-[OR click here]()
+[OR click here](https://jschilds.github.io/Code_Quest/)
 
 ## How to Play
 
