@@ -1,15 +1,15 @@
 # CODE_QUEST
 A text-based adventure game where players must traverse a dungeon, collecting objects and solving computer-based puzzles. Made using HTML, CSS and JavaScript.
 
-## How to Get the Game
+## How to Launch the Game
 
-Clone this repository from `git@github.com:JSChilds/Text-based-Adventure-Game.git`
+1. Clone this repository from `git@github.com:JSChilds/Text-based-Adventure-Game.git`
 
-Run `open index.html` in the terminal to launch the game.
+2. Run `open index.html` in the terminal to launch the game.
 
-Click on the Code_Quest.exe icon to begin...
+3. Click on the Code_Quest.exe icon to begin...
 
-![Screenshot of index page, with starting icon highlighted](../screenshots/screenshot_icon.png)
+![Screenshot of index page, with starting icon highlighted](https://github.com/JSChilds/Text-based-Adventure-Game/blob/master/screenshots/screenshot_icon.png)
 
 ...and follow the instructions provided.
 
